@@ -1,0 +1,10 @@
+.listOfInstructions {
+  padding:0px 15px 0px 15px;
+}
+
+/*round out the ends of the instruction and case title sections*/
+.instructionsContainer {
+  border-radius: 10px;
+  margin: 15px 5px 15px 5px;
+  background-color: #0078B2;
+}
