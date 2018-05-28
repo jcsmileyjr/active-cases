@@ -13,19 +13,18 @@ import ToggleInstruction from './Components/ToggleInstruction/toggleInstruction.
 
       const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter", caseNumber:"18-100"}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"Director has letter", caseNumber:"18-200"}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor desk", caseNumber:"18-300"}];
 
-class App extends Component {
+class CaseManagement extends Component{
 
   displayCases(){
 	  const caseLoad = cases.map((files) =>
 			<li key={files.caseNumber}><Case type={files.type} casino={files.casino} patron={files.patron} status={files.status} /></li>					 
 								);
 	  return caseLoad;
-  }	 
-	
+  }
+    
   render() {
     return (
       <div className="row">
-		<Nav className="mainColor" />
 		<div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 sectionBorder">
 		  <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
 			<Instructions className="instructionsContainer mainColor" />
@@ -39,6 +38,29 @@ class App extends Component {
 			<CaseTitle />
 			<ul className="listOfCases ">{this.displayCases()}</ul>
 		</div>
+      </div>
+    );
+  }    
+    
+}
+
+function Testing(){
+    return <p>Testing</p>;
+}
+
+class App extends Component {
+  constructor(props){
+      super(props);
+      this.state = {newCase:true};
+  }    
+
+	
+  render() {
+    return (
+      <div className="row">
+		<Nav className="mainColor" />
+        {this.state.newCase && <CaseManagement />}
+        {!this.state.newCase && <Testing />}
       </div>
     );
   }
