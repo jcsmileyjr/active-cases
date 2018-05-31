@@ -4,10 +4,10 @@ import '../Nav/nav.css';
 function ProgressionList(props){
   return(
     <div className="row instructionsContainer">
-      <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
         <h4>Progression Key</h4>
       </div>
-      <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
         <h4># of Days</h4>
       </div>
       <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">

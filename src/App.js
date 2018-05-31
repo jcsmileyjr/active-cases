@@ -16,6 +16,7 @@ import SelectCase from './Components/SelectCase/selectCase.js';
 
 	  const caseType = ["Dispute", "Complaint", "Jackpot", "Inspection"];
 	  const caseCasino = ["Horseshoe", "Gold-Strike", "Fitz Casino"];
+	  const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's Desk", "Corrections or Reinvestigate", "On director's desk", "Waiting on patron decision", "Sign and close out", "To be filed"];
 
 class CaseManagement extends Component{
 
@@ -53,16 +54,33 @@ class CaseManagement extends Component{
 class NewCase extends Component{
   
   displayCaseTypes(){
-	  const typeOfCases = caseType.map((types, index) =>
+	  const typeOfCases = caseType.map((types) =>
 			<option value={types}>{types}</option>						 
 					);
 	  return typeOfCases;
   }	
 	
+  displayCaseCasinos(){
+	  const typeOfCasinos = caseCasino.map((casino) =>
+			<option value={casino}>{casino}</option>					  
+					);
+	  return typeOfCasinos;
+  }
+	
+  displayCaseProgress(){
+	  const typeOfProgress = caseProgress.map((progress) =>
+			<option value={progress}>{progress}</option>					  
+					);
+	  return typeOfProgress;
+  }		
+	
   render(){
 	return(
 	  <div className="row newCaseForm">
 		<SelectCase Question="What is the type of investigation?" selection={this.displayCaseTypes()} />
+		<SelectCase Question="Choose a casino?" selection={this.displayCaseCasinos()} />
+		<SelectCase Question="What is the current situation?" selection={this.displayCaseProgress()} />	
+		<ProgressionList />	
 	  </div>	
 	);  
   }
