@@ -1,8 +1,9 @@
 import React from 'react';
+import '../Nav/nav.css';
 
       function InstructionStatus(props){
         return(
-          <div className="row">
+          <div className="row instructionsContainer">
             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
               <h4>Color of Status</h4>
               <p>Black</p>

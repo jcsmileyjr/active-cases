@@ -4,7 +4,7 @@ import './toggleInstruction.css';
 
 function ToggleInstruction(props){
   return(
-  	<div className="row">
+  	<div className="row instructionsContainer">
 	  <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 centerAlign">
 	  	<h4>Toggle Instructions Section On/Off</h4>
 	  	<label className="switch">
