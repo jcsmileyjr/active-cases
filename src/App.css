@@ -13,12 +13,26 @@
 }
 
 /*round out the ends of the instruction and case title sections*/
-.instructionsContainer {
+.fileContainer {
   border-radius: 10px;
-  margin: 15px 5px 15px 5px;
+  margin: 15px 5px 5px 5px;
+  padding: 5px 5px 5px 5px;	
+  background-color: #0078B2;
 }
 
 .mainColor {
-	background-color: navy;
+	background-color: #4CC4FE;
+	color: white;
+  	border-radius: 10px;
+  	margin: 5px 5px 5px 5px;
+	padding: 1px 1px 1px 1px;	
+}
+
+.testColor {
+	background-color: #00ACFE;
+	color: white;
+  	border-radius: 10px;
+  	margin: 5px 5px 5px 5px;
+	padding: 1px 1px 1px 1px;
 }
 

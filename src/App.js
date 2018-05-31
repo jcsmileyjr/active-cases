@@ -16,8 +16,8 @@ import ToggleInstruction from './Components/ToggleInstruction/toggleInstruction.
 class CaseManagement extends Component{
 
   displayCases(){
-	  const caseLoad = cases.map((files) =>
-			<li key={files.caseNumber}><Case type={files.type} casino={files.casino} patron={files.patron} status={files.status} /></li>					 
+	  const caseLoad = cases.map((files, index) =>
+			<li className={index % 2 ===0 ? "mainColor":"testColor"} key={files.caseNumber}><Case type={files.type} casino={files.casino} patron={files.patron} status={files.status} /></li>					 
 								);
 	  return caseLoad;
   }
@@ -27,16 +27,18 @@ class CaseManagement extends Component{
       <div className="row">
 		<div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 sectionBorder">
 		  <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-			<Instructions className="instructionsContainer" />
-			<ProgressionList className="instructionsContainer" />	
-			<InstructionStatus className="instructionsContainer" />
-			<InstructionTips className="instructionsContainer" />
-			<ToggleInstruction className="instructionsContainer" />		
+			<Instructions />
+			<ProgressionList />	
+			<InstructionStatus  />
+			<InstructionTips  />
+			<ToggleInstruction  />		
 		  </div>
 		</div>
 		<div className="col-xs-8 col-sm-8 col-md-8 col-lg-8 sectionBorder">
 			<CaseTitle />
+		  <div className="fileContainer">
 			<ul className="listOfCases ">{this.displayCases()}</ul>
+		  </div>
 		</div>
       </div>
     );
