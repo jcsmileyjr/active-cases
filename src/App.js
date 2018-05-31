@@ -9,9 +9,13 @@ import InstructionTips from './Components/InstructionTips/instructionTips.js';
 import Instructions from './Components/Instructions/instructions.js';
 import CaseTitle from './Components/CaseTitle/caseTitle.js';
 import ToggleInstruction from './Components/ToggleInstruction/toggleInstruction.js';
+import SelectCase from './Components/SelectCase/selectCase.js';
 
 
       const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter", caseNumber:"18-100"}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"Director has letter", caseNumber:"18-200"}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor desk", caseNumber:"18-300"}];
+
+	  const caseType = ["Dispute", "Complaint", "Jackpot", "Inspection"];
+	  const caseCasino = ["Horseshoe", "Gold-Strike", "Fitz Casino"];
 
 class CaseManagement extends Component{
 
@@ -46,6 +50,25 @@ class CaseManagement extends Component{
     
 }
 
+class NewCase extends Component{
+  
+  displayCaseTypes(){
+	  const typeOfCases = caseType.map((types, index) =>
+			<option value={types}>{types}</option>						 
+					);
+	  return typeOfCases;
+  }	
+	
+  render(){
+	return(
+	  <div className="row">
+		<h1>Hello Baby Girl</h1>
+		<SelectCase Question="What is the type of investigation?" selection={this.displayCaseTypes()} />
+	  </div>	
+	);  
+  }
+}
+
 function Testing(){
     return <p>Testing</p>;
 }
@@ -53,7 +76,7 @@ function Testing(){
 class App extends Component {
   constructor(props){
       super(props);
-      this.state = {newCase:true};
+      this.state = {newCase:false};
   }    
 
 	
@@ -62,7 +85,7 @@ class App extends Component {
       <div className="row">
 		<Nav className="mainColor" />
         {this.state.newCase && <CaseManagement />}
-        {!this.state.newCase && <Testing />}
+        {!this.state.newCase && <NewCase />}
       </div>
     );
   }
