@@ -61,17 +61,13 @@ class NewCase extends Component{
 	
   render(){
 	return(
-	  <div className="row">
-		<h1>Hello Baby Girl</h1>
+	  <div className="row newCaseForm">
 		<SelectCase Question="What is the type of investigation?" selection={this.displayCaseTypes()} />
 	  </div>	
 	);  
   }
 }
 
-function Testing(){
-    return <p>Testing</p>;
-}
 
 class App extends Component {
   constructor(props){
