@@ -16,6 +16,8 @@ import SubmitCase from './Components/SubmitCase/submitCase.js';
 
       const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter", caseNumber:"18-100"}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"Director has letter", caseNumber:"18-200"}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor desk", caseNumber:"18-300"}];
 
+	  const newFile = {type:"", casino:"", patron:"", status:"", caseNumber:""};
+
 	  const caseType = ["Dispute", "Complaint", "Jackpot", "Inspection"];
 	  const caseCasino = ["Horseshoe", "Gold-Strike", "Fitz Casino"];
 	  const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's Desk", "Corrections or Reinvestigate", "On director's desk", "Waiting on patron decision", "Sign and close out", "To be filed"];
@@ -54,7 +56,6 @@ class CaseManagement extends Component{
 }
 
 class NewCase extends Component{
-  
   displayCaseTypes(){
 	  const typeOfCases = caseType.map((types) =>
 			<option value={types}>{types}</option>						 
@@ -81,7 +82,9 @@ class NewCase extends Component{
 	  <div className="row newCaseForm">
 		<SelectCase Question="What is the type of investigation?" selection={this.displayCaseTypes()} />
 		<SelectCase Question="Choose a casino?" selection={this.displayCaseCasinos()} />
-		<InputCase Question="What is the patron's name?"  />				
+			
+		<InputCase Question="What is the patron's name?" />
+		
 		<SelectCase Question="What is the current situation?" selection={this.displayCaseProgress()} />
 		<SubmitCase />	
 		<ProgressionList />	
@@ -94,16 +97,15 @@ class NewCase extends Component{
 class App extends Component {
   constructor(props){
       super(props);
-      this.state = {newCase:false};
-  }    
-
+      this.state = {newCase:false, workLoad:cases, type:"", casino:"", patron:"", status:"", value:"Tom"};
+  }  	
 	
   render() {
     return (
       <div className="row">
 		<Nav className="mainColor" />
-        {this.state.newCase && <CaseManagement />}
-        {!this.state.newCase && <NewCase />}
+        {this.state.newCase && <CaseManagement caseFiles={this.state.workLoad} />}
+        {!this.state.newCase && <NewCase  />}
       </div>
     );
   }
