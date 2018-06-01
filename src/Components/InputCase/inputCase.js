@@ -4,8 +4,7 @@ import '../SelectCase/selectCase.css';
 class InputCase extends Component{
   constructor(props){
 	  super(props);
-	  this.state = {patronName:""};
-	  this.onInputChange = this.onInputChange .bind(this);
+	  this.onInputChange = this.onInputChange.bind(this);
   }
   render(){
 	  return(
@@ -21,8 +20,8 @@ class InputCase extends Component{
   }
 
   onInputChange(event){
-	  this.setState({patronName:event.target.value});
-	  console.log(this.state.patronName);
+	  event.preventDefault();	  
+	  this.props.updatePatron(event.target.value);
   }	
 
 }

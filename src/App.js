@@ -44,7 +44,7 @@ class CaseManagement extends Component{
 		  </div>
 		</div>
 		<div className="col-xs-8 col-sm-8 col-md-8 col-lg-8 sectionBorder">
-			<CaseTitle />
+		  <CaseTitle />
 		  <div className="fileContainer">
 			<ul className="listOfCases ">{this.displayCases()}</ul>
 		  </div>
@@ -56,6 +56,10 @@ class CaseManagement extends Component{
 }
 
 class NewCase extends Component{
+  constructor(props){
+	  super(props);
+  }
+  	
   displayCaseTypes(){
 	  const typeOfCases = caseType.map((types) =>
 			<option value={types}>{types}</option>						 
@@ -83,7 +87,6 @@ class NewCase extends Component{
 		<SelectCase Question="What is the type of investigation?" selection={this.displayCaseTypes()} />
 		<SelectCase Question="Choose a casino?" selection={this.displayCaseCasinos()} />
 			
-		<InputCase Question="What is the patron's name?" />
 		
 		<SelectCase Question="What is the current situation?" selection={this.displayCaseProgress()} />
 		<SubmitCase />	
@@ -98,14 +101,20 @@ class App extends Component {
   constructor(props){
       super(props);
       this.state = {newCase:false, workLoad:cases, type:"", casino:"", patron:"", status:"", value:"Tom"};
-  }  	
+	  this.onSubmitCase = this.onSubmitCase.bind(this);
+  }
+	
+  //callback function used in newCase's components to create a new case	
+  onSubmitCase(data){
+	  this.setState({paton:data});
+  }	
 	
   render() {
     return (
       <div className="row">
 		<Nav className="mainColor" />
         {this.state.newCase && <CaseManagement caseFiles={this.state.workLoad} />}
-        {!this.state.newCase && <NewCase  />}
+        {!this.state.newCase && <NewCase  updatePatron={this.onSubmitCase} />}
       </div>
     );
   }
