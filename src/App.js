@@ -87,6 +87,7 @@ class NewCase extends Component{
 		<SelectCase Question="What is the type of investigation?" selection={this.displayCaseTypes()} />
 		<SelectCase Question="Choose a casino?" selection={this.displayCaseCasinos()} />
 			
+		<InputCase  updatePatron={this.props.updatePatron} />
 		
 		<SelectCase Question="What is the current situation?" selection={this.displayCaseProgress()} />
 		<SubmitCase />	
@@ -107,6 +108,7 @@ class App extends Component {
   //callback function used in newCase's components to create a new case	
   onSubmitCase(data){
 	  this.setState({paton:data});
+	  console.log("Parent " + this.state.patron);
   }	
 	
   render() {
