@@ -8,3 +8,9 @@
 .textColor {
 	color: white;
 }
+
+.submitButton {
+	color: white;
+	background-color: #00ACFE;
+	border-radius: 10px;
+}
