@@ -10,6 +10,7 @@ import Instructions from './Components/Instructions/instructions.js';
 import CaseTitle from './Components/CaseTitle/caseTitle.js';
 import ToggleInstruction from './Components/ToggleInstruction/toggleInstruction.js';
 import SelectCase from './Components/SelectCase/selectCase.js';
+import InputCase from './Components/InputCase/inputCase.js';
 
 
       const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter", caseNumber:"18-100"}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"Director has letter", caseNumber:"18-200"}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor desk", caseNumber:"18-300"}];
@@ -79,6 +80,7 @@ class NewCase extends Component{
 	  <div className="row newCaseForm">
 		<SelectCase Question="What is the type of investigation?" selection={this.displayCaseTypes()} />
 		<SelectCase Question="Choose a casino?" selection={this.displayCaseCasinos()} />
+		<InputCase Question="What is the patron's name?"  />				
 		<SelectCase Question="What is the current situation?" selection={this.displayCaseProgress()} />	
 		<ProgressionList />	
 	  </div>	
