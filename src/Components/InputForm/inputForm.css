@@ -1,0 +1,22 @@
+/*CSS for the container enclosing the input fields and submit button*/
+.selectContainer {
+	background-color: #00ACFE;
+  	border-radius: 10px;
+  	margin: 10px 5px 10px 5px;
+	padding: 5px 1px 5px 1px;
+}
+
+/*add space between each input field*/
+.spacingBetweenFormInputs{
+	margin: 10px 0px 10px 0px;
+}
+
+/*set the color for the text, not the values inside the select buttons*/
+.textColor {
+	color: white;
+}
+
+/* round the corners of the submit button*/
+.submitButton {
+	border-radius: 10px;
+}

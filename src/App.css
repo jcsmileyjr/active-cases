@@ -41,7 +41,7 @@
 	margin: auto;
     position: absolute;
     top:0; left:0; bottom:0; right:0;
-    width: 60%; 
+    width: 65%;/* 60% in production*/ 
     height: 75%;  
 	background-color: #0078B2;
 }

@@ -9,18 +9,11 @@ import InstructionTips from './Components/InstructionTips/instructionTips.js';
 import Instructions from './Components/Instructions/instructions.js';
 import CaseTitle from './Components/CaseTitle/caseTitle.js';
 import ToggleInstruction from './Components/ToggleInstruction/toggleInstruction.js';
-import SelectCase from './Components/SelectCase/selectCase.js';
-import InputCase from './Components/InputCase/inputCase.js';
-import SubmitCase from './Components/SubmitCase/submitCase.js';
+import InputForm from './Components/InputForm/inputForm.js';
 
 
-      const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter", caseNumber:"18-100"}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"Director has letter", caseNumber:"18-200"}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor desk", caseNumber:"18-300"}];
+const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter", caseNumber:"18-100"}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"Director has letter", caseNumber:"18-200"}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor desk", caseNumber:"18-300"}];
 
-	  const newFile = {type:"", casino:"", patron:"", status:"", caseNumber:""};
-
-	  const caseType = ["Dispute", "Complaint", "Jackpot", "Inspection"];
-	  const caseCasino = ["Horseshoe", "Gold-Strike", "Fitz Casino"];
-	  const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's Desk", "Corrections or Reinvestigate", "On director's desk", "Waiting on patron decision", "Sign and close out", "To be filed"];
 
 class CaseManagement extends Component{
 
@@ -59,40 +52,15 @@ class NewCase extends Component{
   constructor(props){
 	  super(props);
   }
-  	
-  displayCaseTypes(){
-	  const typeOfCases = caseType.map((types) =>
-			<option value={types}>{types}</option>						 
-					);
-	  return typeOfCases;
-  }	
-	
-  displayCaseCasinos(){
-	  const typeOfCasinos = caseCasino.map((casino) =>
-			<option value={casino}>{casino}</option>					  
-					);
-	  return typeOfCasinos;
-  }
-	
-  displayCaseProgress(){
-	  const typeOfProgress = caseProgress.map((progress) =>
-			<option value={progress}>{progress}</option>					  
-					);
-	  return typeOfProgress;
-  }		
+
 	
   render(){
-	return(
+	return(	
 	  <div className="row newCaseForm">
-		<SelectCase Question="What is the type of investigation?" selection={this.displayCaseTypes()} />
-		<SelectCase Question="Choose a casino?" selection={this.displayCaseCasinos()} />
-			
-		<InputCase  updatePatron={this.props.updatePatron} />
-		
-		<SelectCase Question="What is the current situation?" selection={this.displayCaseProgress()} />
-		<SubmitCase />	
+		<InputForm />
 		<ProgressionList />	
 	  </div>	
+	  
 	);  
   }
 }
