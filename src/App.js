@@ -5,7 +5,6 @@ import Case from './Components/Case/Case.js';
 import Nav from './Components/Nav/nav.js';
 import ProgressionList from './Components/ProgressionList/progressionList.js';
 import InstructionStatus from './Components/InstructionStatus/instructionStatus.js';
-import InstructionTips from './Components/InstructionTips/instructionTips.js';
 import Instructions from './Components/Instructions/instructions.js';
 import CaseTitle from './Components/CaseTitle/caseTitle.js';
 import ToggleInstruction from './Components/ToggleInstruction/toggleInstruction.js';
@@ -34,14 +33,13 @@ class CaseManagement extends Component{
 		  </div>
 		</div>
 		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 sectionBorder">
-		  <div className="col-xs-12 col-sm-2 col-md-2 col-lg-3">
+		  <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 			 <Instructions />
-			 <InstructionTips  /> 
 		  </div>
-		  <div className="col-xs-12 col-sm-6 col-md-5 col-lg-6">
+		  <div className="col-xs-12 col-sm-5 col-md-5 col-lg-6">
 			 <ProgressionList />
 		  </div>
-		  <div className="col-xs-12 col-sm-4 col-md-5 col-lg-3">
+		  <div className="col-xs-12 col-sm-4 col-md-4 col-lg-3">
 			 <InstructionStatus  />
 		  </div>		
 		</div>	
