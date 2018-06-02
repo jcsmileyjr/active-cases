@@ -58,7 +58,7 @@ class NewCase extends Component{
   render(){
 	return(	
 	  <div className="row newCaseForm">
-		<InputForm />
+		<InputForm updateWorkLoad={this.props.updateWorkLoad} />
 		<ProgressionList />	
 	  </div>	
 	  
@@ -70,14 +70,15 @@ class NewCase extends Component{
 class App extends Component {
   constructor(props){
       super(props);
-      this.state = {newCase:true, workLoad:cases, type:"", casino:"", patron:"", status:"", value:"Tom"};
+      this.state = {newCase:false, workLoad:cases, type:"", casino:"", patron:"", status:"", value:"Tom"};
 	  this.onSubmitCase = this.onSubmitCase.bind(this);
   }
 	
   //callback function used in newCase's components to create a new case	
-  onSubmitCase(data){
-	  this.setState({paton:data});
-	  console.log("Parent " + this.state.patron);
+  onSubmitCase(data){	  
+	  cases.push({type:data.type, casino:data.casino, patron:data.patron, status:data.status, caseNumber:"18-400"})
+	  this.setState({workLoad:cases});
+	  console.log("Parent " + this.state.workLoad);
   }	
 	
   render() {
@@ -85,7 +86,7 @@ class App extends Component {
       <div className="row">
 		<Nav className="mainColor" />
         {this.state.newCase && <CaseManagement caseFiles={this.state.workLoad} />}
-        {!this.state.newCase && <NewCase  updatePatron={this.onSubmitCase} />}
+        {!this.state.newCase && <NewCase  updateWorkLoad={this.onSubmitCase} />}
       </div>
     );
   }
