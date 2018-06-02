@@ -9,7 +9,7 @@ const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's
 class InputForm extends Component{
   constructor(props){
 	  super(props);
-	  this.state = {type:"", casino:"", patron:"", status:""};
+	  this.state = {type:"dispute", casino:"Horseshoe", patron:"", status:"Waiting on letter from patron"};
 	  this.onInputPatronChange = this.onInputPatronChange.bind(this);
 	  this.onSelectTypeChange = this.onSelectTypeChange.bind(this);
 	  this.onSelectCasinoChange = this.onSelectCasinoChange.bind(this);
