@@ -26,22 +26,25 @@ class CaseManagement extends Component{
     
   render() {
     return (
-      <div className="row">
-		<div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 sectionBorder">
-		  <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-			<Instructions />
-			<ProgressionList />	
-			<InstructionStatus  />
-			<InstructionTips  />
-			<ToggleInstruction  />		
-		  </div>
-		</div>
-		<div className="col-xs-8 col-sm-8 col-md-8 col-lg-8 sectionBorder">
+      <div className="row caseManagementForm">
+		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 sectionBorder">
 		  <CaseTitle />
 		  <div className="fileContainer">
 			<ul className="listOfCases ">{this.displayCases()}</ul>
 		  </div>
 		</div>
+		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 sectionBorder">
+		  <div className="col-xs-12 col-sm-2 col-md-2 col-lg-3">
+			 <Instructions />
+			 <InstructionTips  /> 
+		  </div>
+		  <div className="col-xs-12 col-sm-6 col-md-5 col-lg-6">
+			 <ProgressionList />
+		  </div>
+		  <div className="col-xs-12 col-sm-4 col-md-5 col-lg-3">
+			 <InstructionStatus  />
+		  </div>		
+		</div>	
       </div>
     );
   }    
@@ -69,7 +72,7 @@ class NewCase extends Component{
 class App extends Component {
   constructor(props){
       super(props);
-      this.state = {newCase:false, workLoad:cases, type:"", casino:"", patron:"", status:"", value:"Tom"};
+      this.state = {newCase:true, workLoad:cases, type:"", casino:"", patron:"", status:"", value:"Tom"};
 	  this.onSubmitCase = this.onSubmitCase.bind(this);
   }
 	

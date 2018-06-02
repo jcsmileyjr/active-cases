@@ -10,6 +10,7 @@
 .sectionBorder {
   border-style: solid;
   border-width: thin;
+  background-color: #0078B2;
 }
 
 /*round out the ends of the instruction and case title sections*/
@@ -38,11 +39,21 @@
 	padding: 1px 1px 1px 1px;
 }
 
+.caseManagementForm {
+	border-radius: 10px;
+	margin: auto;
+    position: absolute;
+    top: 0px; left:0; bottom:0; right:0;
+    width: 90%;/* 60% in production*/ 
+    height: 80%;
+}
+
+/*create a smaller centered div to hold the new case creation input fields*/
 .newCaseForm {
 	border-radius: 10px;
 	margin: auto;
     position: absolute;
-/*create a smaller centered div to hold the new case creation input fields*/
+    top: 0px; left:0; bottom:0; right:0;
     width: 65%;/* 60% in production*/ 
     height: 75%;  
 	background-color: #0078B2;
