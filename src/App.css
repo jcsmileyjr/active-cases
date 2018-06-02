@@ -20,6 +20,7 @@
   background-color: #0078B2;
 }
 
+/*alternate color for case files diplayed in App.js's CaseManagement component.*/
 .mainColor {
 	background-color: #4CC4FE;
 	color: white;
@@ -28,6 +29,7 @@
 	padding: 1px 1px 1px 1px;	
 }
 
+/*alternate color for case files diplayed in App.js's CaseManagement component.*/
 .testColor {
 	background-color: #00ACFE;
 	color: white;
@@ -40,7 +42,7 @@
 	border-radius: 10px;
 	margin: auto;
     position: absolute;
-    top:0; left:0; bottom:0; right:0;
+/*create a smaller centered div to hold the new case creation input fields*/
     width: 65%;/* 60% in production*/ 
     height: 75%;  
 	background-color: #0078B2;
