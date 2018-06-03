@@ -17,22 +17,22 @@ class InputForm extends Component{
   }
 	
   displayCaseTypes(){
-	  const typeOfCases = caseType.map((types) =>
-			<option value={types}>{types}</option>						 
+	  const typeOfCases = caseType.map((types, index) =>
+			<option key={index} value={types}>{types}</option>						 
 					);
 	  return typeOfCases;
   }	
 	
   displayCaseCasinos(){
-	  const typeOfCasinos = caseCasino.map((casino) =>
-			<option value={casino}>{casino}</option>					  
+	  const typeOfCasinos = caseCasino.map((casino, index) =>
+			<option key={index} value={casino}>{casino}</option>					  
 					);
 	  return typeOfCasinos;
   }
 	
   displayCaseProgress(){
-	  const typeOfProgress = caseProgress.map((progress) =>
-			<option value={progress}>{progress}</option>					  
+	  const typeOfProgress = caseProgress.map((progress, index) =>
+			<option key={index} value={progress}>{progress}</option>					  
 					);
 	  return typeOfProgress;
   }	
