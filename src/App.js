@@ -78,7 +78,7 @@ class App extends Component {
   onSubmitCase(data){	  
 	  cases.push({type:data.type, casino:data.casino, patron:data.patron, status:data.status, caseNumber:"18-400"})
 	  this.setState({workLoad:cases});
-	  console.log("Parent " + this.state.workLoad);
+      this.setState({newCase:true});
   }	
 	
   render() {
