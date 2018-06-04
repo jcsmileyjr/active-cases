@@ -30,6 +30,7 @@ class CaseManagement extends Component{
 		  <CaseTitle />
 		  <div className="fileContainer">
 			<ul className="listOfCases ">{this.displayCases()}</ul>
+            <p className="fileContainer addNewCaseBackground">Click to Add New Case</p>
 		  </div>
 		</div>
 		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 sectionBorder">
@@ -70,7 +71,7 @@ class NewCase extends Component{
 class App extends Component {
   constructor(props){
       super(props);
-      this.state = {newCase:false, workLoad:cases, type:"", casino:"", patron:"", status:"", value:"Tom"};
+      this.state = {newCase:true, workLoad:cases, type:"", casino:"", patron:"", status:"", value:"Tom"};
 	  this.onSubmitCase = this.onSubmitCase.bind(this);
   }
 	
