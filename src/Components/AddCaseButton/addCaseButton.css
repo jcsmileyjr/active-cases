@@ -1,0 +1,11 @@
+.fa-plus-circle {
+  color: blue;
+}
+
+.clickNewButton {
+  border-radius: 10px;
+  margin: 5px 5px 5px 5px;
+  color: white;
+  background-color: green;
+  padding: 25px 1px 25px 1px;
+}
