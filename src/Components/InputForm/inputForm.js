@@ -13,7 +13,8 @@ class InputForm extends Component{
 	  this.onInputPatronChange = this.onInputPatronChange.bind(this);
 	  this.onSelectTypeChange = this.onSelectTypeChange.bind(this);
 	  this.onSelectCasinoChange = this.onSelectCasinoChange.bind(this);
-	  this.onSelectStatusChange = this.onSelectStatusChange.bind(this);	  
+	  this.onSelectStatusChange = this.onSelectStatusChange.bind(this);	 
+      this.onSubmitClick = this.onSubmitClick.bind(this);
   }
 	
   displayCaseTypes(){
@@ -74,7 +75,7 @@ class InputForm extends Component{
 	  </div>
 	  <div className="row spacingBetweenFormInputs">		  
 	    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 centerAlign">
-	  	  <Button className="submitButton" bsStyle="success" >Submit</Button>
+	  	  <Button className="submitButton" bsStyle="success" onClick={this.onSubmitClick}>Submit</Button>
 	    </div>
 	  </div>	  
 	</div> 	
@@ -86,33 +87,42 @@ class InputForm extends Component{
   onInputPatronChange(event){
 	  event.preventDefault(); //not sure
 	  this.setState({patron:event.target.value});
+       console.log("state " + this.state.patron);
+      console.log("event " + event.target.value);    
   }
   
   /*method to assign user enter data to the state to be use to create a case*/
   onSelectTypeChange(event){
 	  event.preventDefault(); //not sure
 	  this.setState({type:event.target.value});
+       console.log("state " + this.state.type);
+      console.log("event " + event.target.value); 
   }
 
   /*method to assign user enter data to the state to be use to create a case*/
   onSelectCasinoChange(event){
 	  event.preventDefault(); //not sure
 	  this.setState({casino:event.target.value});
+      console.log(this.state.casino);
   }	 
 
   /*method to assign user enter data to the state to be use to create a case*/
   onSelectStatusChange(event){
 	  event.preventDefault(); //not sure
 	  this.setState({status:event.target.value});
+      console.log(this.state.status);
   }	 
 
-  /*method to assign user enter data to the state to be use to create a case
-  onSubmitClick(){
-	  const newWorkLoad = {type:this.state.type, casino:this.state.casino, patron: this.state.patron, status:this.state.status}
-	  this.props.updateWorkLoad(newWorkLoad);
+  /*method to assign user enter data to the state to be use to create a case */
+  onSubmitClick(event){
+      event.preventDefault();
+	  const newWorkLoad = {type:this.state.type, casino:this.state.casino, patron: this.state.patron, status:this.state.status};
+      //const newWorkLoad = this.state.type;
+      console.log("submit " + newWorkLoad );
+	  //this.props.updateWorkLoad(newWorkLoad);
 	  //IMPORTANT. Use a callback function pass DOWN from parent and return the data (event.target.value) to the parent. 
   }			  
-  */
+  
 }
 
 export default InputForm;
