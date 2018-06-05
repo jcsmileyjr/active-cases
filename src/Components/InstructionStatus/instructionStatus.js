@@ -1,20 +1,15 @@
 import React from 'react';
+import '../Nav/nav.css';
 
       function InstructionStatus(props){
         return(
-          <div className="row">
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div className="row instructionsContainer">
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <h4>Color of Status</h4>
-              <p>Black</p>
-              <p>Blue</p>
-              <p>Red</p>
-            </div>
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-              <h4>Means</h4>
-              <p>Plenty of time</p>
-              <p>Running out of time</p>
-              <p>Out of time, finish immediately</p>
-            </div>          
+              <p>Blue = Plenty of time</p>
+              <p>Yellow  = Running out of time</p>
+              <p>Red   = Out of time, finish immediately</p>
+            </div>        
           </div>
         );
       }

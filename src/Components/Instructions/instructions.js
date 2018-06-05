@@ -10,7 +10,8 @@ function Instructions(props){
         <li>The color of the status for each case willl change based on days remaining for a task to be done</li>
         <li>Click the plus icon to create a new case</li>
         <li>Click on a case to update the status</li>
-      </ul>	  
+      </ul>
+	  <p>Tip: Hover over a case to display remaining days</p>
 	</div>  
   );
 }

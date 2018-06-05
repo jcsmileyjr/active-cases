@@ -10,15 +10,57 @@
 .sectionBorder {
   border-style: solid;
   border-width: thin;
+  background-color: #0078B2;
 }
 
 /*round out the ends of the instruction and case title sections*/
-.instructionsContainer {
+.fileContainer {
   border-radius: 10px;
-  margin: 15px 5px 15px 5px;
+  margin: 15px 5px 5px 5px;
+  padding: 5px 5px 5px 5px;	
+  background-color: #0078B2;
 }
 
+/*alternate color for case files diplayed in App.js's CaseManagement component.*/
 .mainColor {
-	background-color: navy;
+	background-color: #4CC4FE;
+	color: white;
+  	border-radius: 10px;
+  	margin: 5px 5px 5px 5px;
+	padding: 1px 1px 1px 1px;	
+}
+
+/*alternate color for case files diplayed in App.js's CaseManagement component.*/
+.testColor {
+	background-color: #00ACFE;
+	color: white;
+  	border-radius: 10px;
+  	margin: 5px 5px 5px 5px;
+	padding: 1px 1px 1px 1px;
+}
+
+.caseManagementForm {
+	border-radius: 10px;
+	margin: auto;
+    position: absolute;
+    top: 0px; left:0; bottom:0; right:0;
+    width: 90%;/* 60% in production*/ 
+    height: 80%;
+}
+
+/*create a smaller centered div to hold the new case creation input fields*/
+.newCaseForm {
+	border-radius: 10px;
+	margin: auto;
+    position: absolute;
+    top: 0px; left:0; bottom:0; right:0;
+    width: 65%;/* 60% in production*/ 
+    height: 80%;  
+	background-color: #0078B2;
+}
+
+.addNewCaseBackground {
+    background-color: green;
+    color: white;
 }
 
