@@ -31,7 +31,7 @@ class CaseManagement extends Component{
 		  <CaseTitle />
 		  <div className="fileContainer">
 			<ul className="listOfCases ">{this.displayCases()}</ul>
-            <AddCaseButton />
+            <AddCaseButton openCase={this.props.openCase} />
 		  </div>
 		</div>
 		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 sectionBorder">
@@ -74,9 +74,15 @@ class App extends Component {
       super(props);
       this.state = {newCase:true, workLoad:cases, type:"", casino:"", patron:"", status:"", value:"Tom"};
 	  this.onSubmitCase = this.onSubmitCase.bind(this);
+	  this.openNewCaseClick = this.openNewCaseClick.bind(this);
   }
 	
-  //callback function used in newCase's components to create a new case	
+  //callback function used in CaseManagement's AddNewCase component to open the NewCase component based on state.newCase true/false
+  openNewCaseClick(){
+	  this.setState({newCase:false});
+  }
+	
+  //callback function used in newCase's components to create a new case, add it to the case database, and transfer the view to caseManagement.	
   onSubmitCase(data){	  
 	  cases.push({type:data.type, casino:data.casino, patron:data.patron, status:data.status, caseNumber:"18-400"})
 	  this.setState({workLoad:cases});
@@ -87,8 +93,8 @@ class App extends Component {
     return (
       <div className="row">
 		<Nav className="mainColor" />
-        {this.state.newCase && <CaseManagement caseFiles={this.state.workLoad} />}
-        {!this.state.newCase && <NewCase  updateWorkLoad={this.onSubmitCase} />}
+        {this.state.newCase && <CaseManagement openCase={this.openNewCaseClick} caseFiles={this.state.workLoad} />}
+        {!this.state.newCase && <NewCase updateWorkLoad={this.onSubmitCase} />}
       </div>
     );
   }
