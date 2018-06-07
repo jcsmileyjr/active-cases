@@ -7,22 +7,77 @@ import ProgressionList from './Components/ProgressionList/progressionList.js';
 import InstructionStatus from './Components/InstructionStatus/instructionStatus.js';
 import Instructions from './Components/Instructions/instructions.js';
 import CaseTitle from './Components/CaseTitle/caseTitle.js';
-import ToggleInstruction from './Components/ToggleInstruction/toggleInstruction.js';
+/*import ToggleInstruction from './Components/ToggleInstruction/toggleInstruction.js'; */
 import InputForm from './Components/InputForm/inputForm.js';
 import AddCaseButton from './Components/AddCaseButton/addCaseButton.js';
 
 
-const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter", caseNumber:"18-100"}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"Director has letter", caseNumber:"18-200"}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor desk", caseNumber:"18-300"}];
+const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter", caseNumber:"18-100", startDate:"2018-06-01T17:55:12.583Z", daysUsed:0, daysHaveLeft:0}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"Director has letter", caseNumber:"18-200", startDate:"2018-06-02T17:55:12.583Z", daysUsed:0, daysHaveLeft:0}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor desk", caseNumber:"18-300", startDate:"2018-06-03T17:55:12.583Z", daysUsed:0, daysHaveLeft:0}];
 
 
 class CaseManagement extends Component{
 
+  /*FOR TESTING, DELETE BEFORE PRODUCTION
+  componentDidMount(){
+	  this.checkDates();
+  }
+	
+  */		
+ 	
+
+  /*tip from https://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript */
+  /*function to get number of days (daysUsed) since last status change and current date.*/	
+  calculateDaysUsed(){
+	  
+	  /*Get today's date*/
+	  const todayDate = new Date();
+
+	  /*loop through each element/object in the cases array calculating the days between the last status change and the current day. This number is assign to the cases daysUsed attribute of cases object.*/
+	  cases.forEach(function(files, index){
+		 	 
+		/*convert the startDate of files from a string into milliseconds*/  
+        var currentCaseStartDate = Date.parse(files.startDate);	
+		
+	  	/*Subtract today's date in milliseconds from startDate in milliseconds. Use the Math function to convert to its absolute value*/
+	  	var numberOfMilliseconds = Math.abs(todayDate.getTime() - currentCaseStartDate);			 
+	  
+	    /*Divide the numberOfMilliseconds varible by a algorithm of a day. Use the Math.ceil function to convert to the smallest number of a given number*/
+	    var daysUsed = Math.ceil(numberOfMilliseconds/(1000*3600*24));
+		  
+		/*assign the number of days used since last status change to current case*/  
+	  	cases[index].daysUsed = daysUsed;
+	  });
+console.log("Days used still work");
+  }	
+	
+  calculateDayshaveLeft(){
+	  
+	  console.log("Days have left");
+  }	
+	
   displayCases(){
+	  /* TO DO
+	  	- get today's date
+		- function to get number of days (daysUsed) between start date and current date. DONE
+		- function to days remaining (daysHaveLeft) to end of status. Take daysUsed and - progressionDays (based on status).
+	  	- Pass (daysHaveLeft) to Case's tooltip
+		- function to determine Case's color (statusColor) based on daysHaveLeft. Add that color to the case array.
+		- Pass statusColor to Case
+		- Update App'js App component submitCase() to include new info
+	  
+	  */
+	  /*FINAL GOAL: Pass to each Case a color and remainingDays (which is displayed in a tooltip)*/
+	  
+
+	  this.calculateDaysUsed();
 	  const caseLoad = cases.map((files, index) =>
-			<li className={index % 2 ===0 ? "mainColor":"testColor"} key={files.caseNumber}><Case type={files.type} casino={files.casino} patron={files.patron} status={files.status} /></li>					 
+        //this.getDaysUsed(todayDate, files.startDate);	
+								 
+		<li className={index % 2 ===0 ? "mainColor":"testColor"} key={files.caseNumber}><Case type={files.type} casino={files.casino} patron={files.patron} status={files.status} /></li>					 
 								);
 	  return caseLoad;
   }
+
     
   render() {
     return (
@@ -52,10 +107,6 @@ class CaseManagement extends Component{
 }
 
 class NewCase extends Component{
-  constructor(props){
-	  super(props);
-  }
-
 	
   render(){
 	return(	
@@ -72,7 +123,7 @@ class NewCase extends Component{
 class App extends Component {
   constructor(props){
       super(props);
-      this.state = {newCase:true, workLoad:cases, type:"", casino:"", patron:"", status:"", value:"Tom"};
+      this.state = {newCase:true, workLoad:cases};
 	  this.onSubmitCase = this.onSubmitCase.bind(this);
 	  this.openNewCaseClick = this.openNewCaseClick.bind(this);
   }
