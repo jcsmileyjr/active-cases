@@ -90,9 +90,6 @@ class CaseManagement extends Component{
 	
   displayCases(){
 	  /* TO DO
-	  	- get today's date
-		- function to get number of days (daysUsed) between start date and current date. DONE
-		- function to days remaining (daysHaveLeft) to end of status. Take daysUsed and - progressionDays (based on status).
 	  	- Pass (daysHaveLeft) to Case's tooltip
 		- function to determine Case's color (statusColor) based on daysHaveLeft. Add that color to the case array.
 		- Pass statusColor to Case
@@ -107,7 +104,7 @@ class CaseManagement extends Component{
 	  const caseLoad = cases.map((files, index) =>
         //this.getDaysUsed(todayDate, files.startDate);	
 								 
-		<li className={index % 2 ===0 ? "mainColor":"testColor"} key={files.caseNumber}><Case type={files.type} casino={files.casino} patron={files.patron} status={files.status} /></li>					 
+		<li className={index % 2 ===0 ? "mainColor":"testColor"} key={files.caseNumber}><Case type={files.type} casino={files.casino} patron={files.patron} status={files.status} daysLeft={files.daysHaveLeft} /></li>					 
 								);
 	  return caseLoad;
   }
