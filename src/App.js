@@ -12,7 +12,7 @@ import InputForm from './Components/InputForm/inputForm.js';
 import AddCaseButton from './Components/AddCaseButton/addCaseButton.js';
 
 
-const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter", caseNumber:"18-100", startDate:"2018-06-01T17:55:12.583Z", daysUsed:0, daysHaveLeft:0}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"Director has letter", caseNumber:"18-200", startDate:"2018-06-02T17:55:12.583Z", daysUsed:0, daysHaveLeft:0}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor desk", caseNumber:"18-300", startDate:"2018-06-03T17:55:12.583Z", daysUsed:0, daysHaveLeft:0}];
+const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter from patron", caseNumber:"18-100", startDate:"2018-06-01T17:55:12.583Z", daysUsed:0, daysHaveLeft:0}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"On director's desk", caseNumber:"18-200", startDate:"2018-06-02T17:55:12.583Z", daysUsed:0, daysHaveLeft:0}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor's desk", caseNumber:"18-300", startDate:"2018-06-03T17:55:12.583Z", daysUsed:0, daysHaveLeft:0}];
 
 
 class CaseManagement extends Component{
@@ -47,12 +47,45 @@ class CaseManagement extends Component{
 		/*assign the number of days used since last status change to current case*/  
 	  	cases[index].daysUsed = daysUsed;
 	  });
-console.log("Days used still work");
   }	
 	
-  calculateDayshaveLeft(){
+  calculateDaysHaveLeft(){
+	  //get current status days
+	  //forEach to subtract current status days from daysUsed
+	  //update cases daysHaveLeft
 	  
-	  console.log("Days have left");
+	  cases.forEach(function(files, index){
+        switch(files.status){
+       		case "Waiting on letter from patron":
+                cases[index].daysHaveLeft = 30 - files.daysUsed;
+				break;
+            case "Active":
+            	cases[index].daysHaveLeft = 10 - files.daysUsed;
+				break;
+       		case "On supervisor's desk":
+                cases[index].daysHaveLeft = 3 - files.daysUsed;
+				break;
+            case "Corrections or Reinvestigate":
+            	cases[index].daysHaveLeft = 3 - files.daysUsed;
+				break;
+       		case "On director's desk":
+                cases[index].daysHaveLeft = 10 - files.daysUsed;
+				break;
+            case "Waiting on patron decision":
+            	cases[index].daysHaveLeft = 30 - files.daysUsed;
+				break;
+       		case "Sign and close out":
+                cases[index].daysHaveLeft = 3 - files.daysUsed;
+				break;
+       		case "To be Filed":
+                cases[index].daysHaveLeft = 1 - files.daysUsed;
+				break;
+			default:
+				console.log("Error");
+
+                }//end of switch statement
+	  
+	  });//end of forEach statement
   }	
 	
   displayCases(){
@@ -70,6 +103,7 @@ console.log("Days used still work");
 	  
 
 	  this.calculateDaysUsed();
+	  this.calculateDaysHaveLeft();
 	  const caseLoad = cases.map((files, index) =>
         //this.getDaysUsed(todayDate, files.startDate);	
 								 
