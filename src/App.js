@@ -50,10 +50,8 @@ class CaseManagement extends Component{
   }	
 	
   calculateDaysHaveLeft(){
-	  //get current status days
-	  //forEach to subtract current status days from daysUsed
-	  //update cases daysHaveLeft
 	  
+	  /*based on the current case's status, the daysHaveLeft case's attribute is updated from the daysUsed attribute minus the alloted time to complete the status.*/
 	  cases.forEach(function(files, index){
         switch(files.status){
        		case "Waiting on letter from patron":
@@ -90,7 +88,6 @@ class CaseManagement extends Component{
 	
   displayCases(){
 	  /* TO DO
-	  	- Pass (daysHaveLeft) to Case's tooltip
 		- function to determine Case's color (statusColor) based on daysHaveLeft. Add that color to the case array.
 		- Pass statusColor to Case
 		- Update App'js App component submitCase() to include new info
@@ -102,7 +99,6 @@ class CaseManagement extends Component{
 	  this.calculateDaysUsed();
 	  this.calculateDaysHaveLeft();
 	  const caseLoad = cases.map((files, index) =>
-        //this.getDaysUsed(todayDate, files.startDate);	
 								 
 		<li className={index % 2 ===0 ? "mainColor":"testColor"} key={files.caseNumber}><Case type={files.type} casino={files.casino} patron={files.patron} status={files.status} daysLeft={files.daysHaveLeft} /></li>					 
 								);
@@ -152,6 +148,8 @@ class NewCase extends Component{
 
 
 class App extends Component {
+	
+  /*newCase is use to cycle through caseManagment and newCase Component. workLoad loads the array of cases to be use in Case component*/	
   constructor(props){
       super(props);
       this.state = {newCase:true, workLoad:cases};
