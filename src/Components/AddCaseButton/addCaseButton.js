@@ -1,6 +1,5 @@
 /*component is in App.js caseManagment's component*/
 import React, {Component} from 'react';
-import {Button} from 'react-bootstrap';
 import './addCaseButton.css';
 
 class AddCaseButton extends Component{
