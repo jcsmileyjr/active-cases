@@ -39,6 +39,24 @@
 	padding: 1px 1px 1px 1px;
 }
 
+/*waring out of time color for case files diplayed in App.js's CaseManagement component.*/
+.warnColor {
+	background-color: gold;
+	color: white;
+  	border-radius: 10px;
+  	margin: 5px 5px 5px 5px;
+	padding: 1px 1px 1px 1px;	
+}
+
+/*danger, finish immediate, color for case files diplayed in App.js's CaseManagement component.*/
+.dangerColor {
+	background-color: lightcoral;
+	color: white;
+  	border-radius: 10px;
+  	margin: 5px 5px 5px 5px;
+	padding: 1px 1px 1px 1px;	
+}
+
 .caseManagementForm {
 	border-radius: 10px;
 	margin: auto;

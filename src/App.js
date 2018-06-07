@@ -12,7 +12,7 @@ import InputForm from './Components/InputForm/inputForm.js';
 import AddCaseButton from './Components/AddCaseButton/addCaseButton.js';
 
 
-const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter from patron", caseNumber:"18-100", startDate:"2018-06-01T17:55:12.583Z", daysUsed:0, daysHaveLeft:0}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"On director's desk", caseNumber:"18-200", startDate:"2018-06-02T17:55:12.583Z", daysUsed:0, daysHaveLeft:0}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor's desk", caseNumber:"18-300", startDate:"2018-06-03T17:55:12.583Z", daysUsed:0, daysHaveLeft:0}];
+const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter from patron", caseNumber:"18-100", startDate:"2018-06-01T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"On director's desk", caseNumber:"18-200", startDate:"2018-06-02T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor's desk", caseNumber:"18-300", startDate:"2018-06-03T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}];
 
 
 class CaseManagement extends Component{
@@ -49,6 +49,7 @@ class CaseManagement extends Component{
 	  });
   }	
 	
+  //calculate the daysHaveLeft attribute of each case array element	
   calculateDaysHaveLeft(){
 	  
 	  /*based on the current case's status, the daysHaveLeft case's attribute is updated from the daysUsed attribute minus the alloted time to complete the status.*/
@@ -85,22 +86,38 @@ class CaseManagement extends Component{
 	  
 	  });//end of forEach statement
   }	
+ 
+  /*change the color of each case array element displayed as a case based on teh daysHaveLeft attribute*/	
+  changeCaseColor(){
+	  cases.forEach((files, index) =>{
+		if(files.daysHaveLeft===3 || files.daysHaveLeft===4){
+			files.color = "warnColor";	//if 3 or 4 days, use a yellowish color
+		}else if(files.daysHaveLeft <= 2){
+			files.color = "dangerColor";//if less 2, use reddish color	
+		}else if(files.daysHaveLeft >5 | (index % 2) === 0 ) {
+			files.color = "mainColor";	/*if greater then 5, alternate between two huse of blue*/
+		}else
+			files.color = "testColor";
+			 
+	  });
+  }	
 	
   displayCases(){
 	  /* TO DO
-		- function to determine Case's color (statusColor) based on daysHaveLeft. Add that color to the case array.
-		- Pass statusColor to Case
 		- Update App'js App component submitCase() to include new info
 	  
 	  */
 	  /*FINAL GOAL: Pass to each Case a color and remainingDays (which is displayed in a tooltip)*/
 	  
 
-	  this.calculateDaysUsed();
-	  this.calculateDaysHaveLeft();
+	  this.calculateDaysUsed();//calculate the numbers of days since status update
+	  this.calculateDaysHaveLeft();//calculate the number of days til status ends
+	  this.changeCaseColor();//change color of case background based on days remaining til end of status time allotted.
+	  
+	  //create an array of Case components as "li" to be displayed in CaseManagement component.
 	  const caseLoad = cases.map((files, index) =>
 								 
-		<li className={index % 2 ===0 ? "mainColor":"testColor"} key={files.caseNumber}><Case type={files.type} casino={files.casino} patron={files.patron} status={files.status} daysLeft={files.daysHaveLeft} /></li>					 
+		<li className={files.color} key={files.caseNumber}><Case type={files.type} casino={files.casino} patron={files.patron} status={files.status} daysLeft={files.daysHaveLeft} /></li>					 
 								);
 	  return caseLoad;
   }
