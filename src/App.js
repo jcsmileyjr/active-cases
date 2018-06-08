@@ -182,7 +182,7 @@ class App extends Component {
   onSubmitCase(data){
 	  var newDate = new Date(); // create a date object for today
 	  var dateString = newDate.toJSON();//convert the date into a string
-	  var updateCaseNumber = (cases[cases.length - 1].caseNumber) + 1;
+	  var updateCaseNumber = (cases[cases.length - 1].caseNumber) + 1; //retrieve the last case's caseNumber and add one to it
 	  cases.push({type:data.type, casino:data.casino, patron:data.patron, status:data.status, caseNumber:updateCaseNumber, startDate:dateString, daysUsed:0, daysHaveLeft:0, color:""}); //update the case's array
 	  
 	  this.setState({workLoad:cases});//update the state's workload's array
