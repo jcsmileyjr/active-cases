@@ -12,7 +12,7 @@ import InputForm from './Components/InputForm/inputForm.js';
 import AddCaseButton from './Components/AddCaseButton/addCaseButton.js';
 
 
-const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter from patron", caseNumber:"18-100", startDate:"2018-06-01T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"On director's desk", caseNumber:"18-200", startDate:"2018-06-02T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor's desk", caseNumber:"18-300", startDate:"2018-06-03T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}];
+const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter from patron", caseNumber:1, startDate:"2018-06-01T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"On director's desk", caseNumber:2, startDate:"2018-06-02T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor's desk", caseNumber:3, startDate:"2018-06-03T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}];
 
 
 class CaseManagement extends Component{
@@ -83,7 +83,6 @@ class CaseManagement extends Component{
 				console.log("Error");
 
                 }//end of switch statement
-	  
 	  });//end of forEach statement
   }	
  
@@ -94,7 +93,7 @@ class CaseManagement extends Component{
 			files.color = "warnColor";	//if 3 or 4 days, use a yellowish color
 		}else if(files.daysHaveLeft <= 2){
 			files.color = "dangerColor";//if less 2, use reddish color	
-		}else if(files.daysHaveLeft >5 | (index % 2) === 0 ) {
+		}else if(files.daysHaveLeft >5 && (index % 2) === 0 ) {
 			files.color = "mainColor";	/*if greater then 5, alternate between two huse of blue*/
 		}else
 			files.color = "testColor";
@@ -113,7 +112,7 @@ class CaseManagement extends Component{
 	  this.calculateDaysUsed();//calculate the numbers of days since status update
 	  this.calculateDaysHaveLeft();//calculate the number of days til status ends
 	  this.changeCaseColor();//change color of case background based on days remaining til end of status time allotted.
-	  
+console.dir(cases);		  
 	  //create an array of Case components as "li" to be displayed in CaseManagement component.
 	  const caseLoad = cases.map((files, index) =>
 								 
@@ -180,10 +179,15 @@ class App extends Component {
   }
 	
   //callback function used in newCase's components to create a new case, add it to the case database, and transfer the view to caseManagement.	
-  onSubmitCase(data){	  
-	  cases.push({type:data.type, casino:data.casino, patron:data.patron, status:data.status, caseNumber:"18-400"})
-	  this.setState({workLoad:cases});
-      this.setState({newCase:true});
+  onSubmitCase(data){
+	  var newDate = new Date(); // create a date object for today
+	  var dateString = newDate.toJSON();//convert the date into a string
+	  var updateCaseNumber = (cases[cases.length - 1].caseNumber) + 1; //retrieve the last case's caseNumber and add one to it
+	  cases.push({type:data.type, casino:data.casino, patron:data.patron, status:data.status, caseNumber:updateCaseNumber, startDate:dateString, daysUsed:0, daysHaveLeft:0, color:""}); //update the case's array
+	  
+	  this.setState({workLoad:cases});//update the state's workload's array
+      this.setState({newCase:true});//change the view to the CaseMangement component
+ 
   }	
 	
   render() {
