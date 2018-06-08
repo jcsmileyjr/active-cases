@@ -83,7 +83,6 @@ class CaseManagement extends Component{
 				console.log("Error");
 
                 }//end of switch statement
-	  
 	  });//end of forEach statement
   }	
  
@@ -180,10 +179,14 @@ class App extends Component {
   }
 	
   //callback function used in newCase's components to create a new case, add it to the case database, and transfer the view to caseManagement.	
-  onSubmitCase(data){	  
-	  cases.push({type:data.type, casino:data.casino, patron:data.patron, status:data.status, caseNumber:"18-400"})
-	  this.setState({workLoad:cases});
-      this.setState({newCase:true});
+  onSubmitCase(data){
+	  var newDate = new Date(); // create a date object for today
+	  var dateString = newDate.toJSON();//convert the date into a string
+	  cases.push({type:data.type, casino:data.casino, patron:data.patron, status:data.status, caseNumber:"18-400", startDate:dateString, daysUsed:0, daysHaveLeft:0, color:""}); //update the case's array
+	  
+	  this.setState({workLoad:cases});//update the state's workload's array
+      this.setState({newCase:true});//change the view to the CaseMangement component
+	  console.dir(cases);
   }	
 	
   render() {
