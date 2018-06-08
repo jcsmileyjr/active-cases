@@ -8,7 +8,7 @@
 
 /*add a border surrounding the two major sections on the main screen*/
 .sectionBorder {
-  border-style: solid;
+  border-bottom-style: solid;
   border-width: thin;
   background-color: #0078B2;
 }
@@ -57,13 +57,17 @@
 	padding: 1px 1px 1px 1px;	
 }
 
+.dangerColor, warnColor, mainColor, testColor {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .caseManagementForm {
 	border-radius: 10px;
 	margin: auto;
     position: absolute;
     top: 0px; left:0; bottom:0; right:0;
     width: 90%;/* 60% in production*/ 
-    height: 80%;
+    height: 87%;
 }
 
 /*create a smaller centered div to hold the new case creation input fields*/
@@ -72,9 +76,16 @@
 	margin: auto;
     position: absolute;
     top: 0px; left:0; bottom:0; right:0;
-    width: 65%;/* 60% in production*/ 
-    height: 80%;  
+    width: 90%;/* 60% in production*/ 
+    height: 87%;  
 	background-color: #0078B2;
+}
+
+.navForm {
+	margin: auto;
+    position: absolute;
+    top: 0px; left:0; bottom:0; right:0;	
+	width: 90%;
 }
 
 /*CSS for add new cases button in caseManagment container*/

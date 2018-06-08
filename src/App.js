@@ -186,7 +186,7 @@ class App extends Component {
 	  
 	  this.setState({workLoad:cases});//update the state's workload's array
       this.setState({newCase:true});//change the view to the CaseMangement component
-	  console.dir(cases);
+	 
   }	
 	
   render() {
