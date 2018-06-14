@@ -82,7 +82,7 @@ class InputForm extends Component{
 	
 	);	  
   }
-/*onClick={this.onSubmitClick()}*/
+		  
   /*method to assign user enter data to the state to be use to create a case*/
   onInputPatronChange(event){
 	  event.preventDefault(); //not sure

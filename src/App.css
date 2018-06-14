@@ -39,7 +39,7 @@
 	padding: 1px 1px 1px 1px;
 }
 
-/*waring out of time color for case files diplayed in App.js's CaseManagement component.*/
+/*alternate color for warning out of time color for case files diplayed in App.js's CaseManagement component.*/
 .warnColor {
 	background-color: gold;
 	color: white;
@@ -48,7 +48,7 @@
 	padding: 1px 1px 1px 1px;	
 }
 
-/*danger, finish immediate, color for case files diplayed in App.js's CaseManagement component.*/
+/*alternate color for danger, finish immediate, color for case files diplayed in App.js's CaseManagement component.*/
 .dangerColor {
 	background-color: lightcoral;
 	color: white;
