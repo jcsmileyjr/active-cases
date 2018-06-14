@@ -16,7 +16,7 @@ class Case extends Component{
 	
 	render(){
 		return (
-			<div className="row casesContainer" data-toggle="tooltip" data-placement="top" title={this.props.daysLeft} onClick={this.openChangeStatusClick}>
+			<div className="row casesContainer" data-toggle="tooltip" data-placement="top" title={this.props.daysLeft + 1} onClick={this.openChangeStatusClick}>
 				<div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 					{this.props.type}
 				</div>
