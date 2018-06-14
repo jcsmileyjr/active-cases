@@ -2,3 +2,11 @@
   border-radius: 10px;
   margin: 20px 5px 30px 5px;
 }
+
+
+/* Extra Small Devices, Phones */ 
+  @media only screen and (max-width : 765px) {
+	  .centerCaseInfo {
+		  text-align: center;
+	  }
+}  
