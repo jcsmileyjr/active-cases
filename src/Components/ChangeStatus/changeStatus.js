@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import { Button } from 'react-bootstrap';
 import './changeStatus.css';
-
+//submitUpdateStatus
 const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's desk", "Corrections or Reinvestigate", "On director's desk", "Waiting on patron decision", "Sign and close out", "To be Filed"];
 
 class ChangeStatus extends Component{
   constructor(props){
-    super(props);	  
-    this.onSelectStatusChange = this.onSelectStatusChange.bind(this);	  
+    super(props);
+	this.state ={newStatus:""};  
+    this.onSelectStatusChange = this.onSelectStatusChange.bind(this);
+	this.submitUpdateStatusClick = this.submitUpdateStatusClick.bind(this);
   }	
 	
   displayCaseProgress(){
@@ -17,8 +19,14 @@ class ChangeStatus extends Component{
 	  return typeOfProgress;
   }
 	
-  onSelectStatusChange(){
-	  console.log("Status updated");
+  onSelectStatusChange(event){
+	  event.preventDefault(); //not sure
+	  this.setState({newStatus:event.target.value}); 
+  }
+	
+  submitUpdateStatusClick(event){
+	  event.preventDefault(); //not sure
+	  this.props.submitUpdateStatus(this.state.newStatus);
   }	
 	
   render(){
@@ -29,7 +37,7 @@ class ChangeStatus extends Component{
 		  
 			<select onChange={this.onSelectStatusChange}>{this.displayCaseProgress()}</select>
 			<div>
-				<Button bsStyle="success">Submit</Button>
+				<Button bsStyle="success" onClick={this.submitUpdateStatusClick}>Submit</Button>
 			</div>
   			
 		</div>

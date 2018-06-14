@@ -93,16 +93,17 @@ class CaseManagement extends Component{
 	  });
   }	
 	
+  //function to create a array of <li> to be displayed as cases in the CaseManagment component 	
   displayCases(){	  
 
 	  this.calculateDaysUsed();//calculate the numbers of days since status update
 	  this.calculateDaysHaveLeft();//calculate the number of days til status ends
 	  this.changeCaseColor();//change color of case background based on days remaining til end of status time allotted.
-console.dir(cases);		  
+		  
 	  //create an array of Case components as "li" to be displayed in CaseManagement component.
 	  const caseLoad = cases.map((files, index) =>
 								 
-		<li className={files.color} key={files.caseNumber}><Case type={files.type} casino={files.casino} patron={files.patron} status={files.status} daysLeft={files.daysHaveLeft} /></li>					 
+		<li className={files.color} key={files.caseNumber}><Case type={files.type} casino={files.casino} patron={files.patron} status={files.status} daysLeft={files.daysHaveLeft} changeStatus={this.props.openChangeStatus} keys={files.caseNumber} /></li>					 
 								);
 	  return caseLoad;
   }
@@ -151,17 +152,26 @@ class NewCase extends Component{
 
 class App extends Component {
 	
-  /*newCase is use to cycle through caseManagment and newCase Component. workLoad loads the array of cases to be use in Case component*/	
+  /*newCase is use to cycle through caseManagment and newCase Component. workLoad loads the array of cases to be use in Case component. updateStatus is use to load the changeStatus component if true*/	
   constructor(props){
       super(props);
+      this.state = {newCase:true, updateStatus:false, workLoad:cases, currentFile:""};
 	  this.onSubmitCase = this.onSubmitCase.bind(this);
 	  this.openNewCaseClick = this.openNewCaseClick.bind(this);
+	  this.openChangeStatusClick = this.openChangeStatusClick.bind(this);
+	  this.onSubmitUpdateStatus = this.onSubmitUpdateStatus.bind(this);
   }
 	
   //callback function used in CaseManagement's AddNewCase component to open the NewCase component based on state.newCase true/false
   openNewCaseClick(){
 	  this.setState({newCase:false});
   }
+	
+  //callback function used in CaseManagement's Case component to open the ChangeStatus component based on this.state.updateStatus true/false {this.state.updateStatus && <ChangeStatus caseNumber={fileNumber} />}
+  openChangeStatusClick(fileNumber){
+	  this.setState({updateStatus:true});
+	  this.setState({currentFile:fileNumber});
+  }	
 	
   //callback function used in newCase's components to create a new case, add it to the case database, and transfer the view to caseManagement.	
   onSubmitCase(data){
@@ -173,15 +183,30 @@ class App extends Component {
 	  this.setState({workLoad:cases});//update the state's workload's array
       this.setState({newCase:true});//change the view to the CaseMangement component
  
+  }
+	
+  //callback function used in the ChangeStatus's component to update the user picked case. When the user clicks a case in the CaseManagment component, the caseNumber of the file is saved to the App's component state. When the user choose a status in the ChangeStatus component, it is sent via callback as pickedStatus. The method search the cases array for the file matching the caseNumber. When found, the status and startDate is updated. The user is then switch back to the CaseManagement's component by changing the App's component state's updateStatus to false. 	
+  onSubmitUpdateStatus(pickedStatus){
+	  let foundFile = 0;
+	  cases.forEach((file, index)=>{
+		  if(file.caseNumber===this.state.currentFile){
+			  foundFile = index;
+		  }
+	  });//search each file to match with the currentFile saved when the user click on the case
+	  cases[foundFile].status = pickedStatus;//change the status of the matching case to the status sent with the callback function from the ChangeStatus component
+	  var newDate = new Date(); // create a date object for today
+	  var dateString = newDate.toJSON();//convert the date into a string
+	  cases[foundFile].startDate = dateString;//change the date to today
+	  this.setState({updateStatus:false});//change the view to CaseManagment	  
   }	
 	
   render() {
     return (
       <div className="row">
 		<Nav className="mainColor" />
-        {this.state.newCase && !this.state.updateStatus && <CaseManagement openCase={this.openNewCaseClick} caseFiles={this.state.workLoad} />}
+        {this.state.newCase && !this.state.updateStatus && <CaseManagement openCase={this.openNewCaseClick} openChangeStatus ={this.openChangeStatusClick} caseFiles={this.state.workLoad} />}
         {!this.state.newCase && !this.state.updateStatus && <NewCase updateWorkLoad={this.onSubmitCase} />}
-		{this.state.updateStatus && <ChangeStatus />}
+		{this.state.updateStatus && <ChangeStatus submitUpdateStatus={this.onSubmitUpdateStatus}  />}
       </div>
     );
   }
