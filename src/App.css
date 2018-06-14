@@ -67,7 +67,7 @@
     position: absolute;
     top: 0px; left:0; bottom:0; right:0;
     width: 90%;/* 60% in production*/ 
-    height: 87%;
+    height: 82%;
 }
 
 /*create a smaller centered div to hold the new case creation input fields*/
@@ -77,7 +77,7 @@
     position: absolute;
     top: 0px; left:0; bottom:0; right:0;
     width: 90%;/* 60% in production*/ 
-    height: 87%;  
+    height: 82%;  
 	background-color: #0078B2;
 }
 
