@@ -10,21 +10,13 @@ import CaseTitle from './Components/CaseTitle/caseTitle.js';
 /*import ToggleInstruction from './Components/ToggleInstruction/toggleInstruction.js'; */
 import InputForm from './Components/InputForm/inputForm.js';
 import AddCaseButton from './Components/AddCaseButton/addCaseButton.js';
-
+import ChangeStatus from './Components/ChangeStatus/changeStatus.js';
 
 const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter from patron", caseNumber:1, startDate:"2018-06-01T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"On director's desk", caseNumber:2, startDate:"2018-06-02T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor's desk", caseNumber:3, startDate:"2018-06-03T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}];
 
 
 class CaseManagement extends Component{
-
-  /*FOR TESTING, DELETE BEFORE PRODUCTION
-  componentDidMount(){
-	  this.checkDates();
-  }
 	
-  */		
- 	
-
   /*tip from https://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript */
   /*function to get number of days (daysUsed) since last status change and current date.*/	
   calculateDaysUsed(){
@@ -101,13 +93,7 @@ class CaseManagement extends Component{
 	  });
   }	
 	
-  displayCases(){
-	  /* TO DO
-		- Update App'js App component submitCase() to include new info
-	  
-	  */
-	  /*FINAL GOAL: Pass to each Case a color and remainingDays (which is displayed in a tooltip)*/
-	  
+  displayCases(){	  
 
 	  this.calculateDaysUsed();//calculate the numbers of days since status update
 	  this.calculateDaysHaveLeft();//calculate the number of days til status ends
@@ -168,7 +154,6 @@ class App extends Component {
   /*newCase is use to cycle through caseManagment and newCase Component. workLoad loads the array of cases to be use in Case component*/	
   constructor(props){
       super(props);
-      this.state = {newCase:true, workLoad:cases};
 	  this.onSubmitCase = this.onSubmitCase.bind(this);
 	  this.openNewCaseClick = this.openNewCaseClick.bind(this);
   }
@@ -194,8 +179,9 @@ class App extends Component {
     return (
       <div className="row">
 		<Nav className="mainColor" />
-        {this.state.newCase && <CaseManagement openCase={this.openNewCaseClick} caseFiles={this.state.workLoad} />}
-        {!this.state.newCase && <NewCase updateWorkLoad={this.onSubmitCase} />}
+        {this.state.newCase && !this.state.updateStatus && <CaseManagement openCase={this.openNewCaseClick} caseFiles={this.state.workLoad} />}
+        {!this.state.newCase && !this.state.updateStatus && <NewCase updateWorkLoad={this.onSubmitCase} />}
+		{this.state.updateStatus && <ChangeStatus />}
       </div>
     );
   }
