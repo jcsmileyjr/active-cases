@@ -111,7 +111,7 @@ class CaseManagement extends Component{
     
   render() {
     return (
-      <div className="row caseManagementForm">
+      <div className="row caseManagementForm smallScreenContentHeight tablietAndAboveContentHeight">
 		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 sectionBorder">
 		  <CaseTitle />
 		  <div className="fileContainer">
@@ -140,7 +140,7 @@ class NewCase extends Component{
 	
   render(){
 	return(	
-	  <div className="row newCaseForm">
+	  <div className="row newCaseForm smallScreenContentHeight tablietAndAboveContentHeight">
 		<InputForm updateWorkLoad={this.props.updateWorkLoad} />
 		<ProgressionList />	
 	  </div>	

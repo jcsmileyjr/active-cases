@@ -94,3 +94,16 @@
     color: white;
 }
 
+/* Extra Small Devices, Phones */ 
+  @media only screen and (max-width : 365px) {
+	  .smallScreenContentHeight{
+		  height:82%;
+	  }
+  }
+
+/* Small Devices, Tablets */
+  @media only screen and (min-width : 768px) {
+	  .tablietAndAboveContentHeight{
+		  height: 88%;
+	  }
+  } 
