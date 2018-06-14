@@ -39,11 +39,11 @@ class ChangeStatus extends Component{
 
   render(){
     return(
-		<div className="centerPage ">
+		<div className="centerPage fixPage">
 				
 			<h3 className="centerAlign whiteColor">Choose a new Status </h3>
 		  <div className="row whiteColor">
-			<div className="col-xs-3 col-xs-offset-3 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3">
+			<div className="col-xs-5 col-xs-offset-1 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3">
 				Case number:
 		    </div>
 			<div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 leftAlign">
@@ -51,7 +51,7 @@ class ChangeStatus extends Component{
 		    </div>		
 		  </div>
 		  <div className="row whiteColor">
-			<div className="col-xs-3 col-xs-offset-3 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3">
+			<div className="col-xs-5 col-xs-offset-1 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3">
 				Previous Status
 		    </div>
 			<div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 leftAlign">

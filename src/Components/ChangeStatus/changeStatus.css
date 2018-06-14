@@ -7,7 +7,7 @@
     position: absolute;
     top: 0px; left:0; bottom:0; right:0;
     width: 90%;/* 60% in production*/ 
-    height: 87%;  
+    height: 85%;  
 	background-color: #0078B2;
 }
 
@@ -30,3 +30,12 @@ select {
 .whiteColor{
 	color:white;
 }
+
+/* Small Devices, Tablets */
+  @media only screen and (min-width : 768px) {
+	  
+	  .fixPage{
+		  height: 91%;
+	  }
+}  
+
