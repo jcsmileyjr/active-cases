@@ -1,11 +1,13 @@
 /*create a smaller centered div to hold the new case creation input fields*/
 .centerPage {
-	border-radius: 10px;
+	//border-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 	margin: auto;
     position: absolute;
     top: 0px; left:0; bottom:0; right:0;
     width: 90%;/* 60% in production*/ 
-    height: 86%;  
+    height: 87%;  
 	background-color: #0078B2;
 }
 
@@ -13,8 +15,18 @@
 .centerAlign{
 	text-align: center;
 }
+
+/*left align selected elements*/
+.leftAlign{
+	text-align: left;
+}
+
 /*add whitespace between the select element and the text*/
 select {
 	margin-top: 15px;
 	margin-bottom: 15px;
+}
+
+.whiteColor{
+	color:white;
 }
