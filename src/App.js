@@ -193,6 +193,7 @@ class App extends Component {
 			  foundFile = index;
 		  }
 	  });//search each file to match with the currentFile saved when the user click on the case
+	  
 	  cases[foundFile].status = pickedStatus;//change the status of the matching case to the status sent with the callback function from the ChangeStatus component
 	  var newDate = new Date(); // create a date object for today
 	  var dateString = newDate.toJSON();//convert the date into a string

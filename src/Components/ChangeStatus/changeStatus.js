@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { Button } from 'react-bootstrap';
 import './changeStatus.css';
-//submitUpdateStatus
-const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's desk", "Corrections or Reinvestigate", "On director's desk", "Waiting on patron decision", "Sign and close out", "To be Filed"];
+
+const caseProgress = ["Select an option","Waiting on letter from patron","Active", "On supervisor's desk", "Corrections or Reinvestigate", "On director's desk", "Waiting on patron decision", "Sign and close out", "To be Filed"];
 
 class ChangeStatus extends Component{
   constructor(props){
@@ -21,12 +21,12 @@ class ChangeStatus extends Component{
 	
   onSelectStatusChange(event){
 	  event.preventDefault(); //not sure
-	  this.setState({newStatus:event.target.value}); 
+	  this.setState({newStatus:event.target.value}); 	  
   }
 	
   submitUpdateStatusClick(event){
 	  event.preventDefault(); //not sure
-	  this.props.submitUpdateStatus(this.state.newStatus);
+	  this.props.submitUpdateStatus(this.state.newStatus);	  
   }	
 	
   render(){
