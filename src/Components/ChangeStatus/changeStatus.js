@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Button } from 'react-bootstrap';
 import './changeStatus.css';
 
-const caseProgress = ["Select an option","Waiting on letter from patron","Active", "On supervisor's desk", "Corrections or Reinvestigate", "On director's desk", "Waiting on patron decision", "Sign and close out", "To be Filed"];
+const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's desk", "Corrections or Reinvestigate", "On director's desk", "Waiting on patron decision", "Sign and close out", "To be Filed"];
 
 class ChangeStatus extends Component{
   constructor(props){
@@ -14,8 +14,10 @@ class ChangeStatus extends Component{
 	
   displayCaseProgress(){
 	  const typeOfProgress = caseProgress.map((progress, index) =>
-			<option key={index} value={progress}>{progress}</option>					  
+			<option key={index + 1}  value={progress}>{progress}</option>					  
 					);
+	  const firstProgress = <option key={0} disabled selected>Pick an option</option>;
+	  typeOfProgress.unshift(firstProgress);
 	  return typeOfProgress;
   }
 	
