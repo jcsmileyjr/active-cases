@@ -12,20 +12,26 @@ class ChangeStatus extends Component{
 	this.submitUpdateStatusClick = this.submitUpdateStatusClick.bind(this);
   }	
 	
+  //function to create a array of options to be displayed in the select element 	
   displayCaseProgress(){
 	  const typeOfProgress = caseProgress.map((progress, index) =>
 			<option key={index + 1}  value={progress}>{progress}</option>					  
 					);
+	  //creates an disable option to be displayed first in the select element. This was a bug fix where the user would select the first element but it wouldn't save it and return a blank
 	  const firstProgress = <option key={0} disabled selected>Pick an option</option>;
+	  
 	  typeOfProgress.unshift(firstProgress);
+	  
 	  return typeOfProgress;
   }
-	
+
+  //method to update the state with the user choice for the select element	
   onSelectStatusChange(event){
 	  event.preventDefault(); //not sure
 	  this.setState({newStatus:event.target.value}); 	  
   }
 	
+  //when the user clicks the submit button, a callback function from the App Component is call. It retrieves the state to be use to update the status of the selected case	
   submitUpdateStatusClick(event){
 	  event.preventDefault(); //not sure
 	  this.props.submitUpdateStatus(this.state.newStatus);	  
