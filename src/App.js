@@ -204,7 +204,7 @@ class App extends Component {
 	
   render() {
     return (
-      <div className="row">
+      <div className="container">
 		<Nav className="mainColor" />
         {this.state.newCase && !this.state.updateStatus && <CaseManagement openCase={this.openNewCaseClick} openChangeStatus ={this.openChangeStatusClick} caseFiles={this.state.workLoad} />}
         {!this.state.newCase && !this.state.updateStatus && <NewCase updateWorkLoad={this.onSubmitCase} />}
