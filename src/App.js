@@ -155,7 +155,7 @@ class App extends Component {
   /*newCase is use to cycle through caseManagment and newCase Component. workLoad loads the array of cases to be use in Case component. updateStatus is use to load the changeStatus component if true*/	
   constructor(props){
       super(props);
-      this.state = {newCase:true, updateStatus:false, workLoad:cases, currentFile:""};
+      this.state = {newCase:true, updateStatus:false, workLoad:cases, currentFile:0};
 	  this.onSubmitCase = this.onSubmitCase.bind(this);
 	  this.openNewCaseClick = this.openNewCaseClick.bind(this);
 	  this.openChangeStatusClick = this.openChangeStatusClick.bind(this);
@@ -206,7 +206,7 @@ class App extends Component {
 		<Nav className="mainColor" />
         {this.state.newCase && !this.state.updateStatus && <CaseManagement openCase={this.openNewCaseClick} openChangeStatus ={this.openChangeStatusClick} caseFiles={this.state.workLoad} />}
         {!this.state.newCase && !this.state.updateStatus && <NewCase updateWorkLoad={this.onSubmitCase} />}
-		{this.state.updateStatus && <ChangeStatus submitUpdateStatus={this.onSubmitUpdateStatus}  />}
+		{this.state.updateStatus && <ChangeStatus submitUpdateStatus={this.onSubmitUpdateStatus} caseNumber={this.state.currentFile} />}
       </div>
     );
   }
