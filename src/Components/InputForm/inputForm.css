@@ -18,5 +18,15 @@
 
 /* round the corners of the submit button*/
 .submitButton {
-	border-radius: 10px;
+	border-radius: 10;
+}
+
+/*set the size of the input text box*/
+input {
+	size: 5px;
+}
+
+/*set the size of the select box*/
+select {
+	width: 115px;
 }

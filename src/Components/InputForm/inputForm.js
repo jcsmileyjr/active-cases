@@ -62,7 +62,7 @@ class InputForm extends Component{
 		  What is the patron name?
 	    </div>
 	    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-	      <input type="text" onChange={this.onInputPatronChange} />
+	      <input type="text" size="13" onChange={this.onInputPatronChange} />
 	    </div>
 	  </div>
 	  <div className="row spacingBetweenFormInputs">		  
