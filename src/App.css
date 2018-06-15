@@ -66,8 +66,8 @@
 	margin: auto;
     position: absolute;
     top: 0px; left:0; bottom:0; right:0;
-    width: 90%;/* 60% in production*/ 
-    height: 87%;
+    width: 90%; 
+    height: 86%;
 }
 
 /*create a smaller centered div to hold the new case creation input fields*/
@@ -76,8 +76,8 @@
 	margin: auto;
     position: absolute;
     top: 0px; left:0; bottom:0; right:0;
-    width: 90%;/* 60% in production*/ 
-    height: 87%;  
+    width: 90%;
+    height: 86%;  
 	background-color: #0078B2;
 }
 
@@ -94,3 +94,16 @@
     color: white;
 }
 
+/* Extra Small Devices, Phones */ 
+  @media only screen and (max-width : 365px) {
+	  .smallScreenContentHeight{
+		  height:82%;
+	  }
+  }
+
+/* Small Devices, Tablets */
+  @media only screen and (min-width : 768px) {
+	  .tablietAndAboveContentHeight{
+		  height: 88%;
+	  }
+  } 

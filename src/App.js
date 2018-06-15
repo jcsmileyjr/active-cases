@@ -111,7 +111,7 @@ class CaseManagement extends Component{
     
   render() {
     return (
-      <div className="row caseManagementForm">
+      <div className="row caseManagementForm smallScreenContentHeight tablietAndAboveContentHeight">
 		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 sectionBorder">
 		  <CaseTitle />
 		  <div className="fileContainer">
@@ -140,7 +140,7 @@ class NewCase extends Component{
 	
   render(){
 	return(	
-	  <div className="row newCaseForm">
+	  <div className="row newCaseForm smallScreenContentHeight tablietAndAboveContentHeight">
 		<InputForm updateWorkLoad={this.props.updateWorkLoad} />
 		<ProgressionList />	
 	  </div>	
@@ -155,7 +155,7 @@ class App extends Component {
   /*newCase is use to cycle through caseManagment and newCase Component. workLoad loads the array of cases to be use in Case component. updateStatus is use to load the changeStatus component if true*/	
   constructor(props){
       super(props);
-      this.state = {newCase:true, updateStatus:false, workLoad:cases, currentFile:0};
+      this.state = {newCase:true, updateStatus:false, workLoad:cases, currentFile:0, currentStatus:""};
 	  this.onSubmitCase = this.onSubmitCase.bind(this);
 	  this.openNewCaseClick = this.openNewCaseClick.bind(this);
 	  this.openChangeStatusClick = this.openChangeStatusClick.bind(this);
@@ -167,10 +167,11 @@ class App extends Component {
 	  this.setState({newCase:false});
   }
 	
-  //callback function used in CaseManagement's Case component to open the ChangeStatus component based on this.state.updateStatus true/false {this.state.updateStatus && <ChangeStatus caseNumber={fileNumber} />}
-  openChangeStatusClick(fileNumber){
+  //callback function used in CaseManagement's Case component to open the ChangeStatus component based on this.state.updateStatus true/false. Updates the state currentFile and currentStatus data to display the current case information in the ChangeStatus Component. 
+  openChangeStatusClick(fileNumber, newStatus){
 	  this.setState({updateStatus:true});
 	  this.setState({currentFile:fileNumber});
+	  this.setState({currentStatus: newStatus});
   }	
 	
   //callback function used in newCase's components to create a new case, add it to the case database, and transfer the view to caseManagement.	
@@ -193,6 +194,7 @@ class App extends Component {
 			  foundFile = index;
 		  }
 	  });//search each file to match with the currentFile saved when the user click on the case
+	  
 	  cases[foundFile].status = pickedStatus;//change the status of the matching case to the status sent with the callback function from the ChangeStatus component
 	  var newDate = new Date(); // create a date object for today
 	  var dateString = newDate.toJSON();//convert the date into a string
@@ -202,11 +204,11 @@ class App extends Component {
 	
   render() {
     return (
-      <div className="row">
+      <div className="container">
 		<Nav className="mainColor" />
         {this.state.newCase && !this.state.updateStatus && <CaseManagement openCase={this.openNewCaseClick} openChangeStatus ={this.openChangeStatusClick} caseFiles={this.state.workLoad} />}
         {!this.state.newCase && !this.state.updateStatus && <NewCase updateWorkLoad={this.onSubmitCase} />}
-		{this.state.updateStatus && <ChangeStatus submitUpdateStatus={this.onSubmitUpdateStatus} caseNumber={this.state.currentFile} />}
+		{this.state.updateStatus && <ChangeStatus submitUpdateStatus={this.onSubmitUpdateStatus} caseNumber={this.state.currentFile} caseStatus={this.state.currentStatus} />}
       </div>
     );
   }
