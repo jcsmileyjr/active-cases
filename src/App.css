@@ -50,7 +50,7 @@
 
 /*alternate color for danger, finish immediate, color for case files diplayed in App.js's CaseManagement component.*/
 .dangerColor {
-	background-color: lightcoral;
+	background-color: #C90000;
 	color: black;
   	border-radius: 10px;
   	margin: 5px 5px 5px 5px;

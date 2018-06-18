@@ -1,5 +1,4 @@
 import React from 'react';
-import '../Nav/nav.css';
 import './instructions.css';
 
 function Instructions(props){
@@ -9,7 +8,7 @@ function Instructions(props){
       <ul className="listOfInstructions">
         <li>The color of the status for each case willl change based on days remaining for a task to be done</li>
         <li>Click the plus icon to create a new case</li>
-        <li>Click on a case to update the status</li>
+        <li>Click on a case to <span className="blueStatusColor"> update the status</span></li>
       </ul>
 	  <p>Tip: Hover over a case to display remaining days</p>
 	</div>  
