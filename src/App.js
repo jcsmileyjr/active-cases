@@ -194,12 +194,19 @@ class App extends Component {
 			  foundFile = index;
 		  }
 	  });//search each file to match with the currentFile saved when the user click on the case
-	  
-	  cases[foundFile].status = pickedStatus;//change the status of the matching case to the status sent with the callback function from the ChangeStatus component
-	  var newDate = new Date(); // create a date object for today
-	  var dateString = newDate.toJSON();//convert the date into a string
-	  cases[foundFile].startDate = dateString;//change the date to today
-	  this.setState({updateStatus:false});//change the view to CaseManagment	  
+      
+      //if need to change, use array.filter to create a new array or use an if statment to insure index is not a -1. A -1 cause the splice to delete from the end of the array automatically.
+      if(pickedStatus==="To be Filed"){
+          cases.splice(foundFile,1);//remove the current case clicked by user from the array of cases          
+      }else{//change the status of the currenet case clicked by the user
+          cases[foundFile].status = pickedStatus;//change the status of the matching case to the status sent with the callback function from the ChangeStatus component
+          var newDate = new Date(); // create a date object for today
+          var dateString = newDate.toJSON();//convert the date into a string
+          cases[foundFile].startDate = dateString;//change the date to today
+      }
+    
+      this.setState({updateStatus:false});//change the view to CaseManagment 
+        
   }	
 	
   render() {
