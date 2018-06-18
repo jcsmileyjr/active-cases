@@ -28,7 +28,7 @@ function ProgressionList(props){
         <p>10 days</p>
         <p>30 days</p>
         <p>3 days</p>
-        <p>1 days</p>
+        <p>Delete</p>
       </div>          
     </div>  
   );	
