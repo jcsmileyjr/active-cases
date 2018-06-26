@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import './case.css';
-//changeStatus()
-
 
 class Case extends Component{
 	constructor(props){
