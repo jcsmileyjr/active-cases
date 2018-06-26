@@ -7,6 +7,10 @@
 /* Extra Small Devices, Phones */ 
   @media only screen and (max-width : 765px) {
 	  .centerCaseInfo {
-		  text-align: center;
+		  text-align: left;
+	  }
+	  
+	  .alternateTitlePlacment {
+
 	  }
 }  
