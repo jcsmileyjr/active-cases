@@ -1,11 +1,19 @@
 /*round out the ends of the instruction and case title sections*/
 .instructionsContainer {
   border-radius: 10px;
-  margin: 15px 5px 15px 5px;
+  margin: 15px 0px 15px 0px;
   background-color: white;
   color: black;
 }
 
 .rightAlign {
 	text-align: right;
+}
+
+.leftAlign {
+	text-align: left;
+}
+
+div {
+	width: 100%;
 }

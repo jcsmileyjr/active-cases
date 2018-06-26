@@ -119,7 +119,7 @@ class CaseManagement extends Component{
             <AddCaseButton openCase={this.props.openCase} />
 		  </div>
 		</div>
-		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 sectionBorder">
+		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		  <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 			 <Instructions />
 		  </div>
