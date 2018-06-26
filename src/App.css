@@ -26,7 +26,7 @@
 	background-color: #4CC4FE;
 	color: black;
   	border-radius: 10px;
-  	margin: 5px 5px 5px 5px;
+  	margin: 10px 5px 5px 5px;
 	padding: 1px 1px 1px 1px;	
 }
 
@@ -35,7 +35,7 @@
 	background-color: #00ACFE;
 	color: black;
   	border-radius: 10px;
-  	margin: 5px 5px 5px 5px;
+  	margin: 10px 5px 5px 5px;
 	padding: 1px 1px 1px 1px;
 }
 
@@ -44,7 +44,7 @@
 	background-color: gold;
 	color: black;
   	border-radius: 10px;
-  	margin: 5px 5px 5px 5px;
+  	margin: 10px 5px 5px 5px;
 	padding: 1px 1px 1px 1px;	
 }
 
@@ -53,11 +53,11 @@
 	background-color: #C90000;
 	color: black;
   	border-radius: 10px;
-  	margin: 5px 5px 5px 5px;
+  	margin: 10px 5px 5px 5px;
 	padding: 1px 1px 1px 1px;	
 }
 
-.dangerColor, warnColor, mainColor, testColor {
+.dangerColor, .warnColor, .mainColor, .testColor {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -98,6 +98,13 @@
   @media only screen and (max-width : 365px) {
 	  .smallScreenContentHeight{
 		  height:82%;
+	  }
+  }
+
+  @media only screen and (max-width : 465px) {
+	  .smallScreenSmallerCaseContainers {
+		    margin: 10px 5px 0px 5px;
+			padding: 1px 1px 0px 1px;	
 	  }
   }
 
