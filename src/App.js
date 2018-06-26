@@ -82,13 +82,13 @@ class CaseManagement extends Component{
   changeCaseColor(){
 	  cases.forEach((files, index) =>{
 		if(files.daysHaveLeft===3 || files.daysHaveLeft===4){
-			files.color = "warnColor";	//if 3 or 4 days, use a yellowish color
+			files.color = "warnColor smallScreenSmallerCaseContainers";	//if 3 or 4 days, use a yellowish color
 		}else if(files.daysHaveLeft <= 2){
-			files.color = "dangerColor";//if less 2, use reddish color	
+			files.color = "dangerColor smallScreenSmallerCaseContainers";//if less 2, use reddish color	
 		}else if(files.daysHaveLeft >5 && (index % 2) === 0 ) {
-			files.color = "mainColor";	/*if greater then 5, alternate between two huse of blue*/
+			files.color = "mainColor smallScreenSmallerCaseContainers";	/*if greater then 5, alternate between two huse of blue*/
 		}else
-			files.color = "testColor";
+			files.color = "testColor smallScreenSmallerCaseContainers";
 			 
 	  });
   }	
@@ -126,6 +126,7 @@ class CaseManagement extends Component{
 		  <div className="col-xs-12 col-sm-5 col-md-5 col-lg-4">
 			 <ProgressionList />
 		  </div>
+		  <div className="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-lg-offset-1">
 			 <InstructionStatus  />
 		  </div>		
 		</div>	

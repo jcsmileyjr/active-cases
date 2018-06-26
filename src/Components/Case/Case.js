@@ -54,6 +54,10 @@ class Case extends Component{
 				<div className="col-xs-9 hidden-sm hidden-md hidden-lg">
 					{this.props.status}
 				</div>
+
+				<div className="col-xs-12 hidden-sm hidden-md hidden-lg smallScreenDaysRemaining">
+					<p>Days remaining til due: {this.props.daysLeft + 1}.</p>
+				</div>
 			</div>
 
 

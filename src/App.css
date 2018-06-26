@@ -101,6 +101,13 @@
 	  }
   }
 
+  @media only screen and (max-width : 465px) {
+	  .smallScreenSmallerCaseContainers {
+		    margin: 10px 5px 0px 5px;
+			padding: 1px 1px 0px 1px;	
+	  }
+  }
+
 /* Small Devices, Tablets */
   @media only screen and (min-width : 768px) {
 	  .tablietAndAboveContentHeight{
