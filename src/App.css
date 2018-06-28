@@ -61,32 +61,8 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.caseManagementForm {
-	border-radius: 10px;
-	margin: auto;
-    position: absolute;
-    top: 0px; left:0; bottom:0; right:0;
-    width: 90%; 
-    height: 86%;
-}
 
-/*create a smaller centered div to hold the new case creation input fields*/
-.newCaseForm {
-	border-radius: 10px;
-	margin: auto;
-    position: absolute;
-    top: 0px; left:0; bottom:0; right:0;
-    width: 90%;
-    height: 86%;  
-	background-color: white;
-}
 
-.navForm {
-	margin: auto;
-    position: absolute;
-    top: 0px; left:0; bottom:0; right:0;	
-	width: 90%;
-}
 
 /*CSS for add new cases button in caseManagment container*/
 .addNewCaseBackground {
@@ -94,12 +70,6 @@
     color: white;
 }
 
-/* Extra Small Devices, Phones */ 
-  @media only screen and (max-width : 365px) {
-	  .smallScreenContentHeight{
-		  height:82%;
-	  }
-  }
 
   @media only screen and (max-width : 465px) {
 	  .smallScreenSmallerCaseContainers {
@@ -108,9 +78,3 @@
 	  }
   }
 
-/* Small Devices, Tablets */
-  @media only screen and (min-width : 768px) {
-	  .tablietAndAboveContentHeight{
-		  height: 88%;
-	  }
-  } 
