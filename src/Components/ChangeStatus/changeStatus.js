@@ -39,7 +39,7 @@ class ChangeStatus extends Component{
 
   render(){
     return(
-		<div className="centerPage fixPage">
+		<div className="centerPage">
 				
 			<h3 className="centerAlign whiteColor">Choose a new Status </h3>
 		  <div className="row whiteColor">
