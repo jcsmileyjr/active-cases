@@ -6,9 +6,7 @@
   color: black;
 }
 
-.rightAlign {
-	text-align: right;
-}
+
 
 .leftAlign {
 	text-align: left;
@@ -17,3 +15,11 @@
 div {
 	width: 100%;
 }
+
+/* Extra Small Devices, Phones */ 
+  @media only screen and (max-width : 768px) {
+	  
+	.rightAlign {
+		text-align: right;
+	}	  
+}  
