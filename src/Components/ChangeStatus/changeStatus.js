@@ -7,7 +7,7 @@ const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's
 class ChangeStatus extends Component{
   constructor(props){
     super(props);
-	this.state ={newStatus:""};  
+	this.state ={newStatus:caseProgress[0]};  
     this.onSelectStatusChange = this.onSelectStatusChange.bind(this);
 	this.submitUpdateStatusClick = this.submitUpdateStatusClick.bind(this);
   }	
@@ -18,7 +18,7 @@ class ChangeStatus extends Component{
 			<option key={index + 1}  value={progress}>{progress}</option>					  
 					);
 	  //creates an disable option to be displayed first in the select element. This was a bug fix where the user would select the first element but it wouldn't save it and return a blank
-	  const firstProgress = <option key={0} disabled selected>Pick an option</option>;
+	  const firstProgress = <option key={0} disabled value="N/A">Pick an option</option>;
 	  
 	  typeOfProgress.unshift(firstProgress);
 	  

@@ -59,10 +59,10 @@ class InputForm extends Component{
 	  </div>
 	  <div className="row spacingBetweenFormInputs">		  
 	    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 textColor">
-		  What is the patron name?
+		  What is the patron name or case number?
 	    </div>
 	    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-	      <input type="text" size="13" onChange={this.onInputPatronChange} />
+	      <input type="text" size="13" maxLength="20" onChange={this.onInputPatronChange} />
 	    </div>
 	  </div>
 	  <div className="row spacingBetweenFormInputs">		  
@@ -82,7 +82,7 @@ class InputForm extends Component{
 	
 	);	  
   }
-/*className={this.state.patron==""?"disabled submitButton":"active submitButton"}*/		  
+		  
   /*method to assign user enter data to the state to be use to create a case*/
   onInputPatronChange(event){
 	  event.preventDefault(); //not sure
