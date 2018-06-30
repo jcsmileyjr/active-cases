@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Button} from 'react-bootstrap';
 import './inputForm.css';
 
-const caseType = ["Dispute", "Complaint", "Jackpot", "Inspection"];
-const caseCasino = ["Horseshoe", "Gold-Strike", "Fitz Casino"];
+const caseType = ["Dispute", "Complaint", "Jackpot", "Inspection", "Minor", "Revocation", "Crimminal", "Violation"];
+const caseCasino = ["Horseshoe", "Gold-Strike", "Fitz Casino", "Roadhouse", "1st Jackpot", "Resorts", "Sam's Town", "Hollywood", "Isle of Capri"];
 const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's desk", "Corrections or Reinvestigate", "On director's desk", "Waiting on patron decision", "Sign and close out", "To be Filed"];
 
 class InputForm extends Component{
@@ -59,10 +59,10 @@ class InputForm extends Component{
 	  </div>
 	  <div className="row spacingBetweenFormInputs">		  
 	    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 textColor">
-		  What is the patron name?
+		  What is the patron name or case number?
 	    </div>
 	    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-	      <input type="text" size="13" onChange={this.onInputPatronChange} />
+	      <input type="text" size="13" maxLength="20" onChange={this.onInputPatronChange} />
 	    </div>
 	  </div>
 	  <div className="row spacingBetweenFormInputs">		  
@@ -75,7 +75,7 @@ class InputForm extends Component{
 	  </div>
 	  <div className="row spacingBetweenFormInputs">		  
 	    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 centerAlign">
-	  	  <Button className="submitButton" bsStyle="success" onClick={this.onSubmitClick}>Submit</Button>
+	  	  <Button className="submitButton" bsStyle="success" disabled={this.state.patron===""} onClick={this.onSubmitClick}>Submit</Button>
 	    </div>
 	  </div>	  
 	</div> 	
@@ -109,7 +109,6 @@ class InputForm extends Component{
 
   /*method to assign user enter data to the state to be use to create a case */
   onSubmitClick(event){
-      event.preventDefault();
 	  const newWorkLoad = {type:this.state.type, casino:this.state.casino, patron: this.state.patron, status:this.state.status};
 	  this.props.updateWorkLoad(newWorkLoad);
 	  //IMPORTANT. Use a callback function pass DOWN from parent and return the data (event.target.value) to the parent. 
