@@ -29,7 +29,7 @@ class Case extends Component{
 					{this.props.status}
 				</div>
 				<div className="hidden-xs col-sm-3 col-sm-offset-9 showDaysRemaining">
-					<p>Days remaining til due: {this.props.daysLeft=="TBD"? this.props.daysLeft: this.props.daysLeft + 1}.</p>
+					<p>Days remaining til due: {this.props.daysLeft==="TBD"? this.props.daysLeft: this.props.daysLeft + 1}.</p>
 				</div>
 
 

@@ -75,14 +75,14 @@ class InputForm extends Component{
 	  </div>
 	  <div className="row spacingBetweenFormInputs">		  
 	    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 centerAlign">
-	  	  <Button className="submitButton" bsStyle="success" onClick={this.onSubmitClick}>Submit</Button>
+	  	  <Button className="submitButton" bsStyle="success" disabled={this.state.patron===""} onClick={this.onSubmitClick}>Submit</Button>
 	    </div>
 	  </div>	  
 	</div> 	
 	
 	);	  
   }
-		  
+/*className={this.state.patron==""?"disabled submitButton":"active submitButton"}*/		  
   /*method to assign user enter data to the state to be use to create a case*/
   onInputPatronChange(event){
 	  event.preventDefault(); //not sure
@@ -109,7 +109,6 @@ class InputForm extends Component{
 
   /*method to assign user enter data to the state to be use to create a case */
   onSubmitClick(event){
-      event.preventDefault();
 	  const newWorkLoad = {type:this.state.type, casino:this.state.casino, patron: this.state.patron, status:this.state.status};
 	  this.props.updateWorkLoad(newWorkLoad);
 	  //IMPORTANT. Use a callback function pass DOWN from parent and return the data (event.target.value) to the parent. 
