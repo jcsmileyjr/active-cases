@@ -15,7 +15,7 @@ class Case extends Component{
 	
 	render(){
 		return (
-			<div className="row casesContainer centerCaseInfo" data-toggle="tooltip" data-placement="top" title={"Days remaining til due: " + (this.props.daysLeft + 1)} onClick={this.openChangeStatusClick}>
+			<div className="row casesContainer centerCaseInfo" onClick={this.openChangeStatusClick}>
 				<div className="hidden-xs col-sm-3 col-md-3 col-lg-3">
 					{this.props.type}
 				</div>
@@ -27,6 +27,9 @@ class Case extends Component{
 				</div>
 				<div className="hidden-xs col-sm-3 col-md-3 col-lg-3">
 					{this.props.status}
+				</div>
+				<div className="hidden-xs col-sm-3 col-sm-offset-9 showDaysRemaining">
+					<p>Days remaining til due: {this.props.daysLeft=="TBD"? this.props.daysLeft: this.props.daysLeft + 1}.</p>
 				</div>
 
 
