@@ -59,7 +59,7 @@ class Case extends Component{
 				</div>
 
 				<div className="col-xs-12 hidden-sm hidden-md hidden-lg smallScreenDaysRemaining">
-					<p>Days remaining til due: {this.props.daysLeft + 1}.</p>
+					<p>Days remaining til due: {this.props.daysLeft==="TBD"? this.props.daysLeft: this.props.daysLeft + 1}.</p>
 				</div>
 			</div>
 
