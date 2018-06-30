@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Button } from 'react-bootstrap';
 import './changeStatus.css';
 
-const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's desk", "Corrections or Reinvestigate", "On director's desk", "Waiting on patron decision", "Sign and close out", "To be Filed"];
+const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's desk", "Corrections or Reinvestigate", "Judicial process", "Waiting on patron decision", "Sign, Close, and Filed"];
 
 class ChangeStatus extends Component{
   constructor(props){

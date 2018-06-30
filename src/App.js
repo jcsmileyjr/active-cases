@@ -12,7 +12,7 @@ import InputForm from './Components/InputForm/inputForm.js';
 import AddCaseButton from './Components/AddCaseButton/addCaseButton.js';
 import ChangeStatus from './Components/ChangeStatus/changeStatus.js';
 
-const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter from patron", caseNumber:1, startDate:"2018-06-26T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"On director's desk", caseNumber:2, startDate:"2018-06-20T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"On supervisor's desk", caseNumber:3, startDate:"2018-06-28T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}];
+const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter from patron", caseNumber:1, startDate:"2018-06-26T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"On supervisor's desk", caseNumber:2, startDate:"2018-06-20T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"Judicial process", caseNumber:3, startDate:"2018-06-28T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}];
 
 
 class CaseManagement extends Component{
@@ -54,22 +54,19 @@ class CaseManagement extends Component{
             	cases[index].daysHaveLeft = 10 - files.daysUsed;
 				break;
        		case "On supervisor's desk":
-                cases[index].daysHaveLeft = 3 - files.daysUsed;
+                cases[index].daysHaveLeft = "TBD";
 				break;
             case "Corrections or Reinvestigate":
             	cases[index].daysHaveLeft = 3 - files.daysUsed;
 				break;
-       		case "On director's desk":
-                cases[index].daysHaveLeft = 10 - files.daysUsed;
+       		case "Judicial process":
+                cases[index].daysHaveLeft = "TBD";
 				break;
             case "Waiting on patron decision":
             	cases[index].daysHaveLeft = 30 - files.daysUsed;
 				break;
-       		case "Sign and close out":
+       		case "Sign, Close, and Filed":
                 cases[index].daysHaveLeft = 3 - files.daysUsed;
-				break;
-       		case "To be Filed":
-                cases[index].daysHaveLeft = 1 - files.daysUsed;
 				break;
 			default:
 				console.log("Error");
@@ -85,6 +82,8 @@ class CaseManagement extends Component{
 			files.color = "warnColor smallScreenSmallerCaseContainers";	//if 3 or 4 days, use a yellowish color
 		}else if(files.daysHaveLeft <= 2){
 			files.color = "dangerColor smallScreenSmallerCaseContainers";//if less 2, use reddish color	
+		}else if(files.daysHaveLeft === "TBD"){
+			files.color = "warnColor smallScreenSmallerCaseContainers";	//indefinate yellow color
 		}else if(files.daysHaveLeft >5 && (index % 2) === 0 ) {
 			files.color = "mainColor smallScreenSmallerCaseContainers";	/*if greater then 5, alternate between two huse of blue*/
 		}else
@@ -196,7 +195,7 @@ class App extends Component {
 	  });//search each file to match with the currentFile saved when the user click on the case
       
       //if need to change, use array.filter to create a new array or use an if statment to insure index is not a -1. A -1 cause the splice to delete from the end of the array automatically.
-      if(pickedStatus==="To be Filed"){
+      if(pickedStatus==="Sign, Close, and Filed"){
           cases.splice(foundFile,1);//remove the current case clicked by user from the array of cases          
       }else{//change the status of the currenet case clicked by the user
           cases[foundFile].status = pickedStatus;//change the status of the matching case to the status sent with the callback function from the ChangeStatus component
