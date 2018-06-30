@@ -10,7 +10,6 @@ function Instructions(props){
         <li>Click the plus icon to create a new case</li>
         <li>Click on a case to <span className="blueStatusColor"> update the status</span></li>
       </ul>
-	  <p>Tip: Hover over a case to display remaining days</p>
 	</div>  
   );
 }

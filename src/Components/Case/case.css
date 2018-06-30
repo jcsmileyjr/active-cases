@@ -1,11 +1,16 @@
 .casesContainer {
   border-radius: 10px;
-  margin: 20px 5px 30px 5px;
+  margin: 20px 5px 15px 5px;
 }
 
 .smallScreenDaysRemaining {
 	margin-top: 15px;
 	font-size: 0.875em;
+}
+
+/*align the "days remaing" information on the far right side of the case and under the status*/
+.showDaysRemaining {
+	margin-top: 10px;
 }
 
 
