@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import localforage from 'localforage';
 
 import Case from './Components/Case/Case.js';
 import Nav from './Components/Nav/nav.js';
