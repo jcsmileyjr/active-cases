@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import localforage from 'localforage';
 
 import Case from './Components/Case/Case.js';
 import Nav from './Components/Nav/nav.js';
@@ -12,8 +13,21 @@ import InputForm from './Components/InputForm/inputForm.js';
 import AddCaseButton from './Components/AddCaseButton/addCaseButton.js';
 import ChangeStatus from './Components/ChangeStatus/changeStatus.js';
 
-const cases = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter from patron", caseNumber:1, startDate:"2018-06-26T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"On supervisor's desk", caseNumber:2, startDate:"2018-06-20T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"Judicial process", caseNumber:3, startDate:"2018-06-28T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}];
+//const pits = [{type:"Dispute", casino:"Horseshoe", patron:"Billy Bob", status:"Waiting on letter from patron", caseNumber:1, startDate:"2018-06-26T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"Complaint", casino:"GoldStrike", patron:"Sally Sue", status:"On supervisor's desk", caseNumber:2, startDate:"2018-06-20T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}, {type:"inspection", casino:"Fitz Casino", patron:"Crazy Willy", status:"Judicial process", caseNumber:3, startDate:"2018-06-28T17:55:12.583Z", daysUsed:0, daysHaveLeft:0, color:""}];
 
+let cases = [];
+
+function getCasesFromIndexDB(){
+    
+    localforage.iterate(function(value, key, iterationNumber){
+        cases.push(value);
+        console.log(value);
+    });
+
+    
+}
+
+getCasesFromIndexDB();
 
 class CaseManagement extends Component{
 	
@@ -172,13 +186,26 @@ class App extends Component {
 	  this.setState({currentFile:fileNumber});
 	  this.setState({currentStatus: newStatus});
   }	
+    
+    
+  addCaseToIndexDB(){
+      localforage.setItem((cases[cases.length - 1].caseNumber).toString(), cases[cases.length - 1]);
+  }    
 	
   //callback function used in newCase's components to create a new case, add it to the case database, and transfer the view to caseManagement.	
   onSubmitCase(data){
 	  var newDate = new Date(); // create a date object for today
 	  var dateString = newDate.toJSON();//convert the date into a string
-	  var updateCaseNumber = (cases[cases.length - 1].caseNumber) + 1; //retrieve the last case's caseNumber and add one to it
+      
+      if (cases.length === 0)
+        var updateCaseNumber= 1// if there is no cases, the first case is number one
+      else
+        updateCaseNumber = (cases[cases.length - 1].caseNumber) + 1; //retrieve the last case's caseNumber and add one to it          
+      
+
 	  cases.push({type:data.type, casino:data.casino, patron:data.patron, status:data.status, caseNumber:updateCaseNumber, startDate:dateString, daysUsed:0, daysHaveLeft:0, color:""}); //update the case's array
+      
+      this.addCaseToIndexDB();
 	  
 	  this.setState({workLoad:cases});//update the state's workload's array
       this.setState({newCase:true});//change the view to the CaseMangement component
