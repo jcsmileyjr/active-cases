@@ -4,7 +4,7 @@ import './inputForm.css';
 
 const caseType = ["Dispute", "Complaint", "Jackpot", "Inspection", "Minor", "Revocation", "Crimminal", "Violation"];
 const caseCasino = ["Horseshoe", "Gold-Strike", "Fitz Casino", "Roadhouse", "1st Jackpot", "Resorts", "Sam's Town", "Hollywood", "Isle of Capri"];
-const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's desk", "Corrections or Reinvestigate", "On director's desk", "Waiting on patron decision", "Sign and close out", "To be Filed"];
+const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's desk", "Corrections or Reinvestigate", "Judicial process", "Waiting on patron decision", "Sign, Close, and Filed"];
 
 class InputForm extends Component{
   constructor(props){
