@@ -1,7 +1,7 @@
 # Active Cases
 <hr>
-![Picture](assets/Index%20Cards%20Landing%20Page-400.png) 
-![Picture](assets/Index%20Cards%20Q&A-Good.png) 
+![Picture](assets/active-case-a-compressor.png) 
+
 ### Table of Contents
 1. Project Demo Link
 2. Purpose
@@ -10,7 +10,7 @@
 5. How to Use
 6. Technologies Used
 
-### Deployed Production Link: [Active Cases](https://jcsmileyjr.github.io/Index-Cards/)
+### Deployed Production Link: [Active Cases](https://active-cases.herokuapp.com/)
 
 ### Purpose:
 A case management app designed to keep the user informed of the current status of each case and allow management of the user's portfolio of cases. It's deployed as a progressive web app designed for the desktop.
@@ -34,7 +34,7 @@ As a senior law enforcement/regulatory agent I have seen work cases lost, forgot
 ### This app was built with the following technologies:
 **React:** JavaScript front-end library for building user interfaces.
 
-** Heroku: ** A cloud platform (PaaS) for deploying web apps
+**Heroku:** A cloud platform (PaaS) for deploying web apps
 
 **Node.js** Server side development platform created to run JavaScript
 
