@@ -1,6 +1,7 @@
 # Active Cases
 <hr>
-![Picture](assets/active-case-a-compressor.png) 
+
+![Screen-shot of app in use](assets/active-case-a-compressor.png) 
 
 ### Table of Contents
 1. Project Demo Link
