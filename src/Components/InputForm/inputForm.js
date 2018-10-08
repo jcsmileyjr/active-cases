@@ -9,12 +9,11 @@ const caseProgress = ["Waiting on letter from patron","Active", "On supervisor's
 class InputForm extends Component{
   constructor(props){
 	  super(props);
-	  this.state = {type:"Dispute", casino:"Horseshoe", patron:"", date:"", status:"Waiting on letter from patron"};
+	  this.state = {type:"Dispute", casino:"Horseshoe", patron:"", status:"Waiting on letter from patron"};
 	  this.onInputPatronChange = this.onInputPatronChange.bind(this);
 	  this.onSelectTypeChange = this.onSelectTypeChange.bind(this);
 	  this.onSelectCasinoChange = this.onSelectCasinoChange.bind(this);
-	  this.onSelectStatusChange = this.onSelectStatusChange.bind(this);
-      this.onSelectDateChange = this.onSelectDateChange.bind(this);
+	  this.onSelectStatusChange = this.onSelectStatusChange.bind(this);	 
       this.onSubmitClick = this.onSubmitClick.bind(this);
   }
 	
@@ -79,7 +78,7 @@ class InputForm extends Component{
 	  	  What is the start date for the case?
 	    </div>
 	    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <input type="date" onChange={this.onSelectDateChange} />
+          <input type="date" />
 	    </div>
 	  </div>          
 	  <div className="row spacingBetweenFormInputs">		  
@@ -116,18 +115,11 @@ class InputForm extends Component{
 	  this.setState({status:event.target.value});
   }	 
 
-  /*method to assign user enter data to the state to be use to create a case*/
-  onSelectDateChange(event){
-	  event.preventDefault(); //not sure
-	  this.setState({date:event.target.value});
-  }
-
   /*method to assign user enter data to the state to be use to create a case */
   onSubmitClick(event){
-	  const newWorkLoad = {type:this.state.type, casino:this.state.casino, patron: this.state.patron, date:this.state.date, status:this.state.status};
-console.log(this.state.date);      
+	  const newWorkLoad = {type:this.state.type, casino:this.state.casino, patron: this.state.patron, status:this.state.status};
 	  this.props.updateWorkLoad(newWorkLoad);
-	  //IMPORTANT. Use a callback function pass DOWN from the parent and return the data (event.target.value) to the parent. 
+	  //IMPORTANT. Use a callback function pass DOWN from parent and return the data (event.target.value) to the parent. 
   }			  
   
 }

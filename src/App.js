@@ -184,14 +184,17 @@ class App extends Component {
   }	
     
   //callback function used in newCase's components to create a new case, add it to the case database, and transfer the view to caseManagement.	
-  onSubmitCase(data){      
+  onSubmitCase(data){
+	  var newDate = new Date(); // create a date object for today
+	  var dateString = newDate.toJSON();//convert the date into a string
+      
       if (cases.length === 0)
         var updateCaseNumber= 1// if there is no cases, the first case is number one
       else
         updateCaseNumber = (cases[cases.length - 1].caseNumber) + 1; //retrieve the last case's caseNumber and add one to it          
       
 
-	  cases.push({type:data.type, casino:data.casino, patron:data.patron, status:data.status, caseNumber:updateCaseNumber, startDate:data.date, daysUsed:0, daysHaveLeft:0, color:""}); //update the case's array
+	  cases.push({type:data.type, casino:data.casino, patron:data.patron, status:data.status, caseNumber:updateCaseNumber, startDate:dateString, daysUsed:0, daysHaveLeft:0, color:""}); //update the case's array
       
       //transform the cases array into a string and saves it to the brower's local storage
       localStorage.setItem('caseLoad', JSON.stringify(cases));
