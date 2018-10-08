@@ -74,14 +74,6 @@ class InputForm extends Component{
 	    </div>
 	  </div>
 	  <div className="row spacingBetweenFormInputs">		  
-	    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 textColor">
-	  	  What is the start date for the case?
-	    </div>
-	    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <input type="date" />
-	    </div>
-	  </div>          
-	  <div className="row spacingBetweenFormInputs">		  
 	    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 centerAlign">
 	  	  <Button className="submitButton" bsStyle="success" disabled={this.state.patron===""} onClick={this.onSubmitClick}>Submit</Button>
 	    </div>
