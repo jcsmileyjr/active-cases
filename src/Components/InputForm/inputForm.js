@@ -125,6 +125,7 @@ class InputForm extends Component{
   /*method to assign user enter data to the state to be use to create a case */
   onSubmitClick(event){
 	  const newWorkLoad = {type:this.state.type, casino:this.state.casino, patron: this.state.patron, date:this.state.date, status:this.state.status};
+console.log(this.state.date);      
 	  this.props.updateWorkLoad(newWorkLoad);
 	  //IMPORTANT. Use a callback function pass DOWN from the parent and return the data (event.target.value) to the parent. 
   }			  
