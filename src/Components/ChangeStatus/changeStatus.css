@@ -1,9 +1,6 @@
 /*create a smaller centered div to hold the new case creation input fields*/
 .centerPage {
 	border-radius: 10px;
-	margin: auto;
-    width: 60%;
-    height: 50%;  
 	background-color: #0078B2;
 	padding:10px;
 }

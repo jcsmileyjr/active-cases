@@ -163,15 +163,14 @@ class UpdateStatus extends Component {
     return(
       <div className="row">
         <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-          <ChangeStatus submitUpdateStatus={this.props.submitUpdateStatus} caseNumber={this.props.caseNumber} caseStatus={this.props.caseStatus} />
+          <ChangeStatus submitUpdateStatus={this.props.submitUpdateStatus} caseStatus={this.props.caseStatus} />
         </div>
 		<div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 		  <ProgressionList />
         </div>
 		<div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 			 <InstructionStatus  />
-		</div>		
-       
+		</div>
       </div>    
     )      
   }    
@@ -251,7 +250,7 @@ class App extends Component {
 		<Nav className="mainColor" />
         {this.state.newCase && !this.state.updateStatus && <CaseManagement openCase={this.openNewCaseClick} openChangeStatus ={this.openChangeStatusClick} caseFiles={this.state.workLoad} />}
         {!this.state.newCase && !this.state.updateStatus && <NewCase updateWorkLoad={this.onSubmitCase} />}
-		{this.state.updateStatus && <UpdateStatus submitUpdateStatus={this.onSubmitUpdateStatus} caseNumber={this.state.currentFile} caseStatus={this.state.currentStatus} />}
+		{this.state.updateStatus && <UpdateStatus submitUpdateStatus={this.onSubmitUpdateStatus} caseStatus={this.state.currentStatus} />}
       </div>
     );
   }
