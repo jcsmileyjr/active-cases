@@ -27,8 +27,9 @@ select {
 }
 
 /* Portrait phones and smaller */
-@media (max-width: 480px) {
+@media (max-width: 766px) {
   .spaceBetweenComponents {
       margin-top: 20px;
+      
   }
 }  
