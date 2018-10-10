@@ -269,7 +269,7 @@ class App extends Component {
         
   }
     
-  //callback function used in the ChangeCasino's component to update the user picked case. When the user clicks a case in the CaseManagment component, the caseNumber of the file is saved to the App's component state. When the user choose a casino in the ChangeCasino component, it is sent via callback as pickedCasino. The method search the cases array for the file matching the caseNumber. When found, the casino is updated. The user is then switch back to the CaseManagement's component by changing the App's component state's updateStatus to false. 	
+  //callback function used in the ChangeName's component to update the user picked case. When the user clicks a case in the CaseManagment component, the caseNumber of the file is saved to the App's component state. When the user choose a Name in the ChangeName component, it is sent via callback as pickedName. The method search the cases array for the file matching the caseNumber. When found, the patron is updated. The user is then switch back to the CaseManagement's component by changing the App's component state's updateStatus to false. 	
   onSubmitUpdateName(pickedName){     
 	  let foundFile = 0;       
 	  cases.forEach((file, index)=>{        
