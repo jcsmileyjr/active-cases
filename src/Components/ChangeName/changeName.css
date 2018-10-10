@@ -2,7 +2,6 @@
 .centerPage {
 	border-radius: 10px;
 	background-color: #0078B2;
-    height: 250px;
 	padding:10px;
 }
 
@@ -17,7 +16,7 @@
 }
 
 /*add whitespace between the select element and the text*/
-select {
+input {
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
@@ -25,10 +24,3 @@ select {
 .whiteColor{
 	color:white;
 }
-
-/* Portrait phones and smaller */
-@media (max-width: 480px) {
-  .spaceBetweenComponents {
-      margin-top: 20px;
-  }
-}  
