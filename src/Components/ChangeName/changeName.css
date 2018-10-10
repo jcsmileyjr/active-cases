@@ -16,7 +16,7 @@
 }
 
 /*add whitespace between the select element and the text*/
-select {
+input {
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
@@ -24,5 +24,3 @@ select {
 .whiteColor{
 	color:white;
 }
-
-

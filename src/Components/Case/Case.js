@@ -10,7 +10,7 @@ class Case extends Component{
 	//method called when the user clicks on a case in the CaseManagement's component. It calls a callback function from the App's container component and pass on the current case's key. This key is use in a App's method to change the status of the seleted case.
 	openChangeStatusClick(event){
 		event.preventDefault(); //not sure
-		this.props.changeStatus(this.props.keys, this.props.status);
+		this.props.changeStatus(this.props.keys, this.props.status, this.props.casino, this.props.patron);
 	}
 	
 	render(){

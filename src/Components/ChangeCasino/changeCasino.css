@@ -2,6 +2,7 @@
 .centerPage {
 	border-radius: 10px;
 	background-color: #0078B2;
+    height: 250px;
 	padding:10px;
 }
 
@@ -25,4 +26,10 @@ select {
 	color:white;
 }
 
-
+/* Portrait phones and smaller */
+@media (max-width: 766px) {
+  .spaceBetweenComponents {
+      margin-top: 20px;
+      
+  }
+}  

@@ -11,6 +11,8 @@ import CaseTitle from './Components/CaseTitle/caseTitle.js';
 import InputForm from './Components/InputForm/inputForm.js';
 import AddCaseButton from './Components/AddCaseButton/addCaseButton.js';
 import ChangeStatus from './Components/ChangeStatus/changeStatus.js';
+import ChangeCasino from './Components/ChangeCasino/changeCasino.js';
+import ChangeName from './Components/ChangeName/changeName.js';
 
 let cases = [];//temporily hold all cases
 
@@ -158,17 +160,37 @@ class NewCase extends Component{
   }
 }
 
+class UpdateStatus extends Component {
+  render(){
+    return(
+      <div className="row">
+        <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <ChangeStatus submitUpdateStatus={this.props.submitUpdateStatus} caseStatus={this.props.caseStatus} />
+        </div>
+		<div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+		  <ChangeCasino submitUpdateCasino={this.props.submitUpdateCasino} caseCasino={this.props.caseCasino} />
+        </div>
+		<div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+		  <ChangeName submitUpdateName={this.props.submitUpdateName} caseName={this.props.caseName} />
+		</div>
+      </div>    
+    )      
+  }    
+}
+
 
 class App extends Component {
 	
   /*newCase is use to cycle through caseManagment and newCase Component. workLoad loads the array of cases to be use in Case component. updateStatus is use to load the changeStatus component if true*/	
   constructor(props){
       super(props);
-      this.state = {newCase:true, updateStatus:false, workLoad:cases, currentFile:0, currentStatus:""};
+      this.state = {newCase:true, updateStatus:false, workLoad:cases, currentFile:0, currentStatus:"", currentCasino:"", currentName:""};
 	  this.onSubmitCase = this.onSubmitCase.bind(this);
 	  this.openNewCaseClick = this.openNewCaseClick.bind(this);
 	  this.openChangeStatusClick = this.openChangeStatusClick.bind(this);
 	  this.onSubmitUpdateStatus = this.onSubmitUpdateStatus.bind(this);
+	  this.onSubmitUpdateCasino = this.onSubmitUpdateCasino.bind(this);
+	  this.onSubmitUpdateName = this.onSubmitUpdateName.bind(this);       
   }
 	
   //callback function used in CaseManagement's AddNewCase component to open the NewCase component based on state.newCase true/false
@@ -177,10 +199,12 @@ class App extends Component {
   }
 	
   //callback function used in CaseManagement's Case component to open the ChangeStatus component based on this.state.updateStatus true/false. Updates the state currentFile and currentStatus data to display the current case information in the ChangeStatus Component. 
-  openChangeStatusClick(fileNumber, newStatus){
+  openChangeStatusClick(fileNumber, newStatus, newCasino, newName){
 	  this.setState({updateStatus:true});
 	  this.setState({currentFile:fileNumber});
 	  this.setState({currentStatus: newStatus});
+	  this.setState({currentCasino: newCasino});
+	  this.setState({currentName: newName});      
   }	
     
   //callback function used in newCase's components to create a new case, add it to the case database, and transfer the view to caseManagement.	
@@ -202,8 +226,8 @@ class App extends Component {
 	
   //callback function used in the ChangeStatus's component to update the user picked case. When the user clicks a case in the CaseManagment component, the caseNumber of the file is saved to the App's component state. When the user choose a status in the ChangeStatus component, it is sent via callback as pickedStatus. The method search the cases array for the file matching the caseNumber. When found, the status and startDate is updated. The user is then switch back to the CaseManagement's component by changing the App's component state's updateStatus to false. 	
   onSubmitUpdateStatus(pickedStatus){
-	  let foundFile = 0;
-	  cases.forEach((file, index)=>{
+	  let foundFile = 0;     
+	  cases.forEach((file, index)=>{         
 		  if(file.caseNumber===this.state.currentFile){
 			  foundFile = index;
 		  }
@@ -224,7 +248,45 @@ class App extends Component {
     
       this.setState({updateStatus:false});//change the view to CaseManagment 
         
-  }	
+  }
+    
+  //callback function used in the ChangeCasino's component to update the user picked case. When the user clicks a case in the CaseManagment component, the caseNumber of the file is saved to the App's component state. When the user choose a casino in the ChangeCasino component, it is sent via callback as pickedCasino. The method search the cases array for the file matching the caseNumber. When found, the casino is updated. The user is then switch back to the CaseManagement's component by changing the App's component state's updateStatus to false. 	
+  onSubmitUpdateCasino(pickedCasino){     
+	  let foundFile = 0;       
+	  cases.forEach((file, index)=>{        
+		  if(file.caseNumber===this.state.currentFile){
+			  foundFile = index;
+		  }
+	  });//search each file to match with the currentFile saved when the user click on the case
+      
+      //if need to change, use array.filter to create a new array or use an if statment to insure index is not a -1. A -1 cause the splice to delete from the end of the array automatically.
+      cases[foundFile].casino = pickedCasino;//change the status of the matching case to the status sent with the callback function from the ChangeStatus component
+      
+      //transform the cases array into a string and saves it to the brower's local storage
+      localStorage.setItem('caseLoad', JSON.stringify(cases));      
+    
+      this.setState({updateStatus:false});//change the view to CaseManagment 
+        
+  }
+    
+  //callback function used in the ChangeName's component to update the user picked case. When the user clicks a case in the CaseManagment component, the caseNumber of the file is saved to the App's component state. When the user choose a Name in the ChangeName component, it is sent via callback as pickedName. The method search the cases array for the file matching the caseNumber. When found, the patron is updated. The user is then switch back to the CaseManagement's component by changing the App's component state's updateStatus to false. 	
+  onSubmitUpdateName(pickedName){     
+	  let foundFile = 0;       
+	  cases.forEach((file, index)=>{        
+		  if(file.caseNumber===this.state.currentFile){
+			  foundFile = index;
+		  }
+	  });//search each file to match with the currentFile saved when the user click on the case
+      
+      //if need to change, use array.filter to create a new array or use an if statment to insure index is not a -1. A -1 cause the splice to delete from the end of the array automatically.
+      cases[foundFile].patron = pickedName;//change the status of the matching case to the status sent with the callback function from the ChangeStatus component
+      
+      //transform the cases array into a string and saves it to the brower's local storage
+      localStorage.setItem('caseLoad', JSON.stringify(cases));      
+    
+      this.setState({updateStatus:false});//change the view to CaseManagment 
+        
+  }	       
 	
   render() {
     return (
@@ -232,7 +294,7 @@ class App extends Component {
 		<Nav className="mainColor" />
         {this.state.newCase && !this.state.updateStatus && <CaseManagement openCase={this.openNewCaseClick} openChangeStatus ={this.openChangeStatusClick} caseFiles={this.state.workLoad} />}
         {!this.state.newCase && !this.state.updateStatus && <NewCase updateWorkLoad={this.onSubmitCase} />}
-		{this.state.updateStatus && <ChangeStatus submitUpdateStatus={this.onSubmitUpdateStatus} caseNumber={this.state.currentFile} caseStatus={this.state.currentStatus} />}
+		{this.state.updateStatus && <UpdateStatus submitUpdateName={this.onSubmitUpdateName} caseName={this.state.currentName} submitUpdateStatus={this.onSubmitUpdateStatus} caseStatus={this.state.currentStatus} submitUpdateCasino={this.onSubmitUpdateCasino} caseCasino={this.state.currentCasino} />}
       </div>
     );
   }
