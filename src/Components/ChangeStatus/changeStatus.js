@@ -20,6 +20,7 @@ class ChangeStatus extends Component{
 	  //creates an disable option to be displayed first in the select element. This was a bug fix where the user would select the first element but it wouldn't save it and return a blank
 	  const firstProgress = <option key={0} disabled value="N/A">Pick an option</option>;
 	  
+      //place the disable option in the first [0] position inside the array
 	  typeOfProgress.unshift(firstProgress);
 	  
 	  return typeOfProgress;
