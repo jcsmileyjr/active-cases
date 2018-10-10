@@ -42,19 +42,17 @@ class ChangeStatus extends Component{
     return(
 		<div className="centerPage">				
           <h3 className="centerAlign whiteColor">Choose a new Status </h3>
-		  <div className="row whiteColor">
-			<div className="col-xs-5 col-xs-offset-1 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3">
-				Previous Status:
-		    </div>
-			<div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 leftAlign">
-				{this.props.caseStatus}
-		    </div>		
+          <div className="centerAlign whiteColor">
+				Previous: 
 		  </div>
+          <div className="centerAlign whiteColor">
+				{this.props.caseStatus}
+		  </div>        
 		  <div className="centerAlign">
 				<select onChange={this.onSelectStatusChange}>{this.displayCaseProgress()}</select>
 		  </div>
 		  <div className="centerAlign">
-				<Button bsStyle="success" onClick={this.submitUpdateStatusClick}>Submit</Button>			  
+				<Button bsStyle="success" onClick={this.submitUpdateStatusClick}>Submit</Button>		  
 		  </div>  			
 		</div>
 	);	  

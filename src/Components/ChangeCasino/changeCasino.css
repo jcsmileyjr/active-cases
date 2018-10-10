@@ -25,3 +25,11 @@ select {
 .whiteColor{
 	color:white;
 }
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  .spaceBetweenComponents {
+      margin-top: 20px;
+      margin-bottom: 20px;
+  }
+}  
